@@ -39,16 +39,12 @@
   transition: color 0.35s ease-in-out;
 }
 
-%no-cursor {
-  user-select: none;
-}
-
 %no-bottom-border {
   border-bottom: none;
 }
 
 %section {
-  #core-wrapper & {
+  #post-wrapper & {
     line-height: 1.2;
     margin-bottom: 1rem;
   }
@@ -61,10 +57,6 @@
 
 %cursor-pointer {
   cursor: pointer;
-}
-
-%normal-font-style {
-  font-style: normal;
 }
 
 /* ---------- scss mixin --------- */
@@ -90,6 +82,10 @@
 
 @mixin input-placeholder {
   opacity: 0.6;
+}
+
+@mixin semi-bold {
+  font-weight: 600;
 }
 
 @mixin label($font-size: 1rem, $font-weight: 600, $color: var(--label-color)) {
