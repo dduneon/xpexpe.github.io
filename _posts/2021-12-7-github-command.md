@@ -1,8 +1,8 @@
 ---
 title: 사용하다 알게된 Github 명령어 첫번째 정리
 date: 2021-12-07 19:00:00
-categories: [Development, GitHub]
-tags: [command, github]
+categories: [Study, GitHub]
+tags: [command]
 ---
 
 *GitHub*를 사용하다가 찾아보면서 알게 된 *GitHub command* 정리!
