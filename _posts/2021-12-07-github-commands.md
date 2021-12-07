@@ -1,6 +1,6 @@
 ---
 title: 사용하다 알게된 Github 명령어들
-date: 2021-12-07 19:00:00
+date: 2021-12-07 19:00:00 +0900
 categories: [Study, GitHub]
 tags: [command]
 ---
