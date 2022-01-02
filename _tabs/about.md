@@ -5,4 +5,21 @@ order: 4
 ---
 
 
-> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+```
+Hi I'm JUNHYEUN
+
+I'm Studying Swift now,
+I want to be a IOS Developer
+```
+
+```
+Studied
+
+C, C++, JAVA Language
+```
+
+```
+Studying
+
+Swift, SwiftUI
+```
