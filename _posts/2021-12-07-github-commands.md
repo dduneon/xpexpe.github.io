@@ -38,7 +38,7 @@ git push origin main
 
 
 #### Pull request
-- `push` -> github repo 들어오면 **Compare & pull request** 눌러서 PR(Pull Request) 생성
+- `push` -> github repo 들어오면 **`Compare & pull request`** 눌러서 PR(Pull Request) 생성
 
 
 - - -
@@ -46,7 +46,7 @@ git push origin main
 
 #### After PR
 - 원본 저장소 관리자가 Merge 여부 결정
-> Review code -> Merge
+- Review code -> `Merge`
 ```
 $ git pull (remote)
 $ git branch -d (sub branch)
