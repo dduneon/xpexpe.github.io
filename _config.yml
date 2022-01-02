@@ -20,11 +20,11 @@ timezone: Asia/Seoul
 
 title: 준 현                       # the main title
 
-tagline: 준현 LAB 입니다    # it will display as the sub-title
+tagline: Studying Swift-SwiftUI    # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  iOS 개발자를 꿈꾸는
-  대학생 준현이의 블로그
+  Current Student at CSU
+  Majoring in Computer Science
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://xpexpe.github.io'
