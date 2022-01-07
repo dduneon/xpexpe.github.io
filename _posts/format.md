@@ -5,12 +5,6 @@ categories: []
 tags: []
 ---
 
-**오늘의 한줄**
+## `DAY 00`
 
-
-
----
-
-> ### DAY 00
->
-> 
+*Type your title*

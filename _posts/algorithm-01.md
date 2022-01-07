@@ -1,7 +1,7 @@
 ---
 title: Algorithm - 백준 크로아티아 알파벳(2941)
 date: 2022-01-04 22:00:00 +0900
-categories: [Study, Algorithm]
+categories: [Algorithm, prob]
 tags: [algorithm, baekjoon]
 ---
 
