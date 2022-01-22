@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://xpexpe.github.io/sitemap.xml
