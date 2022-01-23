@@ -1,10 +1,14 @@
 ---
-title: Type Title
-date: 2021-00-00 00:00:00 +0900
-categories: []
-tags: []
+title: type class | type title
+date: 2022-01-00 00:00:00 +0900
+categories: [category]
+tags: [tags]
 ---
 
 ## `DAY 00`
 
-*Type your title*
+*type title*
+
+---
+
+## type subtitle
