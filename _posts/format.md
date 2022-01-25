@@ -9,6 +9,6 @@ tags: [tags]
 
 *type title*
 
+# type subtitle
 ---
 
-## type subtitle
