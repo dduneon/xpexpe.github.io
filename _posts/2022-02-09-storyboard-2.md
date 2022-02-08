@@ -19,7 +19,7 @@ tags: [AutoLayout, Content Hugging, Compression Resistance]
 <img  width="222"  alt="스크린샷 2022-02-06 시간: 23 28 31"  src="https://user-images.githubusercontent.com/84072084/152685628-9a9d8953-056b-4da4-96c1-a85f9a682f73.png">
 <img  width="274"  alt="스크린샷 2022-02-06 시간: 23 28 20"  src="https://user-images.githubusercontent.com/84072084/152685625-2546cbc4-132c-49ba-98c7-94f1f7785865.png">
 
-**`Add New Constraints`**를 통하여 제약조건을 추가할 수 있으며 위 선택된 `Label`은 상, 하, 좌, 우로 24만큼의 margin을 가지고 AutoLayout을 구성하고 있는 것을 확인할 수 있다
+**`Add New Constraints`** 를 통하여 제약조건을 추가할 수 있으며 위 선택된 `Label`은 상, 하, 좌, 우로 24만큼의 margin을 가지고 AutoLayout을 구성하고 있는 것을 확인할 수 있다
 
 참고로 기준점은 나와 가까운 곳에 위치한 Object를 기준으로 하며 **상(`Top`), 하(`Bottom`), 좌(`Leading`), 우(`Trailing`)** 으로 표현한다
 
@@ -46,7 +46,7 @@ Top에 설정된 Constraints를 예시로 보면, 가장 가까운 Object인 `Sa
 
 <img  width="104"  alt="스크린샷 2022-02-09 시간: 03 48 47"  src="https://user-images.githubusercontent.com/84072084/153055312-f0d9fcec-067a-411f-890f-bf89615e2e01.png">
 
-우선순위는 1부터 1000까지의 임의의 수를 통하여 부여할 수 있으며, 숫자가 높을 수록 우선순위가 높음을 의미하며 **`Horizontal`**과 **`Vertical`** 값을 각각 지정할 수 있다
+우선순위는 1부터 1000까지의 임의의 수를 통하여 부여할 수 있으며, 숫자가 높을 수록 우선순위가 높음을 의미하며 **`Horizontal`** 과 **`Vertical`** 값을 각각 지정할 수 있다
 
 <br>
 
@@ -78,6 +78,8 @@ Top에 설정된 Constraints를 예시로 보면, 가장 가까운 Object인 `Sa
 
 현재 두 Label의 Content Hugging Priority의 값은 다음과 같다
 
+<br>
+
 <img width="320" alt="스크린샷 2022-02-09 시간: 04 20 33" src="https://user-images.githubusercontent.com/84072084/153059978-3eb62184-d03c-4638-acc4-a2f2c8442acc.png" title="hi">
 
 | 왼쪽 Label | 오른쪽 Label |
@@ -85,6 +87,8 @@ Top에 설정된 Constraints를 예시로 보면, 가장 가까운 Object인 `Sa
 | 250 | 249 |
 
 왼쪽 Label의 `Priority`가 더 크기 때문에 크기 증가에 대한 저항성을 가지므로 오른쪽 Label의 크기가 늘어나서 `Constraints`를 충족시킨다
+
+<br>
 
 <img width="317" alt="스크린샷 2022-02-09 시간: 04 20 18" src="https://user-images.githubusercontent.com/84072084/153059983-9f2a992b-9487-4652-b1ec-d815f1817309.png">
 
@@ -96,7 +100,7 @@ Top에 설정된 Constraints를 예시로 보면, 가장 가까운 Object인 `Sa
 
 <br>
 
-## Compression Resistance Priority
+## Compression Resistance Priority
 ---
 
 **`Compression Resistance Priority`는 반대로 오브젝트가 원래의 사이즈보다 줄어들 때 사용한다**
@@ -123,6 +127,8 @@ Top에 설정된 Constraints를 예시로 보면, 가장 가까운 Object인 `Sa
 | 750 | 750 |
 
 현재 두 Label의 Compression Resistance Priority의 값은 다음과 같다
+
+<br>
 
 <img width="313" alt="스크린샷 2022-02-09 시간: 04 44 54" src="https://user-images.githubusercontent.com/84072084/153063715-f1066491-a05b-4732-b6c6-d4484a983e4e.png">
 
