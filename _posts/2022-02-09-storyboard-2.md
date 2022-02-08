@@ -1,8 +1,8 @@
 ﻿---
-title: Storyboard | AutoLayout, Priority
+title: Storyboard | 오토레이아웃(AutoLayout), Priority
 date: 2022-02-09 00:40:00 +0900
 categories: [iOS, Storyboard]
-tags: [AutoLayout, Content Hugging, Compression Resistance]
+tags: [AutoLayout, Compression Resistance, Content Hugging]
 ---
 
 *AutoLayout, Priority*
