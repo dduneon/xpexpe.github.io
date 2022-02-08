@@ -2,7 +2,7 @@
 title: Storyboard | UIKit 기초 알아보기
 date: 2022-02-06 20:40:00 +0900
 categories: [iOS, Storyboard]
-tags: [AutoLayout, Content Hugging, Compression Resistance, UIKit, UIViewController]
+tags: [UIKit, UIViewController]
 ---
 
 *UIKit 기초 알아보기*
@@ -87,31 +87,6 @@ tags: [AutoLayout, Content Hugging, Compression Resistance, UIKit, UIViewControl
 
 <br>
 
-## AutoLayout
----
-AutoLayout은 다양한 해상도 비율에 대응하기 위한 개념이고, 제약 조건(Constraints)을 이용하여 뷰의 위치나 크기를 지정하는것
-
-- 화면과의 margin, View들간의 margin, 정렬 등을 이용한다
-
-<img width="222" alt="스크린샷 2022-02-06 시간: 23 28 31" src="https://user-images.githubusercontent.com/84072084/152685628-9a9d8953-056b-4da4-96c1-a85f9a682f73.png">
-<img width="274" alt="스크린샷 2022-02-06 시간: 23 28 20" src="https://user-images.githubusercontent.com/84072084/152685625-2546cbc4-132c-49ba-98c7-94f1f7785865.png">
-
-**Add New Constraints**를 통하여 제약조건을 추가할 수 있으며 위 선택된 `Label`은 상, 하, 좌, 우로 24만큼의 margin을 가지고 AutoLayout을 구성하고 있는 것을 확인할 수 있다
-
-참고로 기준점은 나와 가까운 곳에 위치한 Object를 기준으로 하며 **상(Top), 하(Bottom), 좌(Leading), 우(Trailing)**으로 표현하고 있다
-
-<br>
-
-<img width="997" alt="스크린샷 2022-02-06 시간: 23 40 46" src="https://user-images.githubusercontent.com/84072084/152686147-57a73af3-bf05-4a8a-9b3f-22f880cea51e.png">
-
-Top에 설정된 Constraints를 예시로 보면, 가장 가까운 Object인 `Safe Area`를 기준으로 24만큼 떨어진 곳에 위치함을 알 수 있는데 `Safe Area`란
-
-> 상태바(Status Bar), 내비게이션 바(Navigation Bar), 탭바(Tabbar) 등에 의해서 View가 가려지지 않기 위해서 제공 되던 시스템적인 마진을 뜻함
-
-따라서 위와 같은 방식으로 AutoLayout을 구성할 수 있다
-
-<br>
-
 ## IBOutlet & IBAction
 ---
 
@@ -154,16 +129,3 @@ Connect를 눌러 주면 비로소 다음과 같이 IBOutlet형 변수가 만들
 <img width="375" alt="스크린샷 2022-02-07 시간: 00 11 45" src="https://user-images.githubusercontent.com/84072084/152687437-05b72d17-35c1-4f7f-8ad0-4c1ffdd9bf85.png">
 
 다음과 같이 버튼을 클릭했을 때 레이블의 `text`가 변경되었다
-
-> (미완성) 추가로 적을 것 : Content Hugging, Compression Resistance
-
-
-Content Hugging, Compression Resistance - 원래의 사이즈보다 늘어나게 될 때 / 더 줄어들게 될 때
-
-높으면 크기 유지 / 낮으면 크기 늘어남
-
-높으면 크기 유지 / 낮으면 크기 줄어듦
-
-명언 - 긴 명언 있으면 사이즈 늘어나야함 Huggin name 보다 작게
-
-name은 크기 줄어들면 안되니까 높게 설정
