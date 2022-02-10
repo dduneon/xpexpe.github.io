@@ -18,9 +18,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 준현의 개발 Log                       # the main title
+title: 준이와 현이의 개발일기                       # the main title
 
-tagline: Studying Swift-SwiftUI    # it will display as the sub-title
+tagline: post iOS Developer    # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Current Student at CSU
