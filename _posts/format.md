@@ -10,5 +10,3 @@ tags: [tags]
 *type title*
 
 # type subtitle
----
-

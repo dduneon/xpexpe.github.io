@@ -1,0 +1,116 @@
+---
+
+title: Storyboard | 화면 전환 방법(Segue)
+date: 2022-02-13 01:00:00 +0900
+categories: [iOS, Storyboard]
+tags: [segue, present, push]
+
+---
+
+# Segue를 이용한 Push, Present
+
+---
+
+<img width="802" alt="스크린샷 2022-02-12 시간: 23 41 35" src="https://user-images.githubusercontent.com/84072084/153719628-b639192d-aa61-473b-99eb-6fff17d8d7aa.png">
+
+다음과 같이 네비게이션 컨트롤러와 루트 뷰 컨트롤러를 연결한 후
+
+실습할 Push버튼과 Present 버튼을 루트 뷰 컨트롤러에 추가하고, 이동하게 할 새로운 뷰 컨트롤러를 추가해 준다
+
+<br>
+
+## Segue를 이용한 `Push`
+---
+
+굉장히 간단한데, Push 버튼을 **오른쪽 마우스 버튼**을 누르면서 새로운 뷰 컨트롤러 쪽으로 드래그 하면 된다
+
+<img width="187" alt="스크린샷 2022-02-12 시간: 23 45 45" src="https://user-images.githubusercontent.com/84072084/153719647-8fb1664a-7c14-41df-882a-38314c27d6e3.png">
+
+그러면 다음과 같은 화면이 나오는데, `Show` 를 클릭해 주면 연결이 완료된다
+
+<img width="212" alt="스크린샷 2022-02-13 시간: 01 33 58" src="https://user-images.githubusercontent.com/84072084/153719731-88431c14-ed4f-4fd4-9cbd-65bdddc18895.png">
+<img width="212" alt="스크린샷 2022-02-12 시간: 23 11 41" src="https://user-images.githubusercontent.com/84072084/153719678-83ee7915-7673-4973-82f4-163e0c1d5467.png">
+
+
+다음과 같이 버튼을 누르면, 새로운 뷰 컨트롤러로 이동하는 것을 볼 수 있다
+
+<br>
+
+이번에는 `Back` 버튼을 새로운 뷰 컨트롤러에 직접 만들어 보겠다
+
+버튼을 새로운 뷰 컨트롤러에 삽입하고, `File -> New File -> Cocoa Touch Class` 로 새로운 파일을 생성한다
+
+<img width="439" alt="스크린샷 2022-02-12 시간: 23 51 08" src="https://user-images.githubusercontent.com/84072084/153719781-bea55469-e10b-4a2d-a1f4-b04f367bab73.png">
+
+다음과 같이 지정해 주고, `Next` 를 눌러 `SeguePushViewController` 클래스 생성을 완료한다
+
+<br>
+
+만들었다면, 기존에 만들었던 뷰 컨트롤러와 새로 만든 클래스를 연결해야 한다
+
+<img width="600" alt="스크린샷 2022-02-12 시간: 23 54 55" src="https://user-images.githubusercontent.com/84072084/153719793-71da92f4-d813-4520-a3e5-ed0e3e0c5c3c.png">
+
+표시한 순서대로 접근하여 새로 만든 클래스와 기존 뷰 컨트롤러를 연결시켜주는 작업을 완료한다
+
+<br>
+
+그 후 `Assistant` 를 열고 새로 추가한 버튼의 `Action` 을 연결해 준다
+
+```swift
+@IBAction func tapBackButton(_ sender: UIButton) {
+}
+```
+
+<br>
+
+우리는 `Navigation Controller` 의 `Push` 를 이용하여 화면을 전환하였으므로 네비게이션 스택에서 뷰 컨트롤러를 `Pop` 해주어야 하기 때문에
+
+```swift
+@IBAction func tapBackButton(_ sender: UIButton) {
+		self.navigationController?.popViewController(animated: true)
+}
+```
+
+다음과 같이 `navigationController` 의 `popViewController` 메서드를 이용하여 `Back` 기능을 구현할 수 있다
+
+<br>
+
+`Push, Pop` 은 `Navigation Controller` 의 `Navigation Stack` 을 이용하기 때문에, `self.navigationController` 키워드를 통하여 접근한다
+
+또한, `navigationController` 는 옵셔널이기 때문에 `?` 키워드를 반드시 붙여 주어야 하며, `animated` 는 화면 전환 애니메이션을 사용할것인지 여부를 의미한다
+
+<br>
+
+## Segue를 이용한 `Present`
+---
+
+새로운 View Controller를 만들고, 이번에는 만들어 놓았던 Segue Present 버튼을 이용하여 새로운 뷰 컨트롤러로 `Present` 되도록 실습해 보겠다
+
+위와 동일하게 마우스 오른쪽 클릭을 한 채로 새로운 뷰 컨트롤러로 드래그 앤 드랍 하고 `Present Modally` 를 클릭해 주면 연결이 완료된다
+
+<img width="177" alt="스크린샷 2022-02-13 시간: 00 08 54" src="https://user-images.githubusercontent.com/84072084/153719826-7a2b8653-09d5-4f37-8bf4-8919b0893df1.png">
+
+그러면 앞서 `Present` 방식에서 설명하였던 모습으로 뷰 컨트롤러가 변한 것을 볼 수 있을 것이다
+
+<br>
+
+<img width="278" alt="스크린샷 2022-02-13 시간: 01 38 00" src="https://user-images.githubusercontent.com/84072084/153719897-3abb22e7-49cb-4e6f-a35e-dea5a0671ce9.png">
+<img width="278" alt="스크린샷 2022-02-13 시간: 01 38 06" src="https://user-images.githubusercontent.com/84072084/153719900-5f03d207-2e76-4ab2-8161-df1065bf40f7.png">
+
+정상적으로 작동되며, 위쪽 모서리 부분을 아래로 스와이프 하면 덮어 씌워진 뷰 컨트롤러를 제거할 수 있다
+
+<br>
+
+이후 동일하게 뒤로가기 버튼을 구현하기 위하여 새로운 `Cocoa Touch Class` 파일을 생성하고 이름은 `SeguePresentViewController` 로 설정해 준다
+
+뷰 컨트롤러와 `SeguePresentViewController` 클래스를 연결, 버튼 삽입 후 `Action` 연결을 마친 후
+
+```swift
+@IBAction func tapBackButton(_ sender: UIButton) {
+	self.dismiss(animated: true, completion: nil)
+}
+```
+
+다음과 같이 `dismiss` 함수를 이용하여 이전 뷰 컨트롤러로 되돌아갈 수 있으며, `popViewController` 와 동일하게 `animated` 는 화면 전환 애니메이션 여부를 의미한다
+
+여기서 `completion` 은 화면 전환이 완료된 이후에 실행될 메서드를 작성해주면 된다 (없다면 `nil`)
