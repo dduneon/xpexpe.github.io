@@ -29,14 +29,14 @@ tags: [segue, present, push]
 그러면 다음과 같은 화면이 나오는데, `Show` 를 클릭해 주면 연결이 완료된다
 
 <img width="212" alt="스크린샷 2022-02-13 시간: 01 33 58" src="https://user-images.githubusercontent.com/84072084/153719731-88431c14-ed4f-4fd4-9cbd-65bdddc18895.png">
-<img width="212" alt="스크린샷 2022-02-12 시간: 23 11 41" src="https://user-images.githubusercontent.com/84072084/153719678-83ee7915-7673-4973-82f4-163e0c1d5467.png">
+<img width="200" alt="스크린샷 2022-02-13 시간: 01 48 12" src="https://user-images.githubusercontent.com/84072084/153720254-bacc1c31-9d8c-4f21-8301-9034ba774461.png">
 
 
-다음과 같이 버튼을 누르면, 새로운 뷰 컨트롤러로 이동하는 것을 볼 수 있다
+프로젝트를 실행시켜 결과를 확인해보면, Segue Push 버튼을 누를 때 지정한 뷰 컨트롤러로 이동하는 것을 볼 수 있다
 
 <br>
 
-이번에는 `Back` 버튼을 새로운 뷰 컨트롤러에 직접 만들어 보겠다
+### 이번에는 기존 뷰 컨트롤러로 돌아가는 `Back` 버튼을 새로운 뷰 컨트롤러에 직접 만들어 보겠다
 
 버튼을 새로운 뷰 컨트롤러에 삽입하고, `File -> New File -> Cocoa Touch Class` 로 새로운 파일을 생성한다
 
@@ -114,3 +114,18 @@ tags: [segue, present, push]
 다음과 같이 `dismiss` 함수를 이용하여 이전 뷰 컨트롤러로 되돌아갈 수 있으며, `popViewController` 와 동일하게 `animated` 는 화면 전환 애니메이션 여부를 의미한다
 
 여기서 `completion` 은 화면 전환이 완료된 이후에 실행될 메서드를 작성해주면 된다 (없다면 `nil`)
+
+<br>
+
+`Present` 방식에서 살짝 화면 위가 남아있는 형태를 띄고 있는데, 이를 없애고 Full Screen으로도 수정할 수 있다
+
+<img width="490" alt="스크린샷 2022-02-13 시간: 01 52 36" src="https://user-images.githubusercontent.com/84072084/153720434-885b18ed-04bb-483d-8c1c-edc2d5ae522a.png">
+<img width="272" alt="스크린샷 2022-02-13 시간: 01 53 02" src="https://user-images.githubusercontent.com/84072084/153720437-e25ef363-87fc-489f-9fe2-2b8a7cd48737.png">
+
+빨간색 동그라미친 `SeguePresentViewController` 와 연결된 `Segue`를 클릭한 다음, 오른쪽 메뉴에서 `Presentation` 속성을 `Full Screen`으로 바꾸어 주면
+
+<br>
+
+<img width="216" alt="스크린샷 2022-02-13 시간: 01 53 08" src="https://user-images.githubusercontent.com/84072084/153720440-051209fc-2a8e-48be-87e1-1b7fa9e790bf.png">
+
+다음과 같이 Full Screen으로 Present 되는 것을 볼 수 있다
