@@ -1,0 +1,122 @@
+---
+title: Storyboard | 화면 전환 방법(Code)
+date: 2022-02-13 01:00:00 +0900
+categories: [iOS, Storyboard]
+tags: [code, present, push]
+---
+
+# Code를 이용한 화면 전환
+
+---
+
+이번에는 코드를 이용하여 화면을 전환하는 방법을 실습해 보려고 한다
+
+먼저 다음과 같이 화면이 구성되어 있어야 한다
+
+<img width="500" alt="스크린샷 2022-02-14 시간: 01 00 38" src="https://user-images.githubusercontent.com/84072084/153761566-b5425b24-5a01-4f04-b3c1-f59c779b8014.png">
+
+- `Navigation Controller`
+- 루트 뷰 컨트롤러와 이동할 뷰 컨트롤러
+- 앞서 `Segue` 를 이용한 화면 전환에서 했었던 `Cocoa Touch class` 파일과 뷰 컨트롤러의 연결
+- 루트 뷰 컨트롤러에서 클릭할 버튼 생성
+
+<br>
+
+## Code로 Push 기능 구현
+
+---
+
+<img width="269" alt="스크린샷 2022-02-13 시간: 23 47 19" src="https://user-images.githubusercontent.com/84072084/153761573-d6ffc8da-b90a-4700-9971-90cef83f6522.png">
+
+이후 어시스턴스를 열어 루트 뷰 컨트롤러에 버튼의 `Action` 을 연결해 준다
+
+<br>
+
+<img width="805" alt="스크린샷 2022-02-13 시간: 23 52 03" src="https://user-images.githubusercontent.com/84072084/153761577-32d39b6f-4d85-4a55-ad25-ab79b733ef28.png">
+
+코드를 이용하여 `Push` 할 때에는 이전 글에서 설명한 대로 `Navigation Controller` 의 `pushViewController()` 메서드를 사용해 주면 되는데 함수 원형은 다음과 같다
+
+```swift
+func pushViewController(_ viewController: UIViewController, animated: Bool)
+```
+
+이동하고자 하는 뷰 컨트롤러를 첫번째 parameter에 기입하고, 화면 전환 애니메이션 여부를 두번째 parameter에 넣어서 호출하면 된다
+
+<br>
+
+하지만, 우리가 이 함수를 호출하기 위해서는 이동하려고 하는 `CodePushViewController` 를 인스턴스화 하여야 하기 때문에 다음과 같은 코드를 작성하여 인스턴스화 할 수 있다
+
+```swift
+guard let viewController = self.storyboard?.instantiateViewController(identifier: ) else { return }
+```
+
+스토리보드에 존재하는 `identifier` 값을 가지는 뷰 컨트롤러를 인스턴스화 할 수 있는 것이다
+
+여기서 `identifier` 은 다음과 같은 방법으로 확인 및 설정할 수 있다
+
+- `Push` 할 뷰 컨트롤러 클릭
+- 오른쪽 메뉴에서 `Show Identity inspector` - `Identity` - `Storyboard ID`
+
+<img width="249" alt="스크린샷 2022-02-14 시간: 01 20 52" src="https://user-images.githubusercontent.com/84072084/153762447-0875c735-d8bc-4cf1-b187-86fd6dc4b4c5.png">
+<img width="263" alt="스크린샷 2022-02-14 시간: 01 22 56" src="https://user-images.githubusercontent.com/84072084/153762554-18a5a0e2-5fe1-4329-9f6c-5f11153d78ce.png">
+
+`Storyboard ID` 에 `identifier` 를 설정해 줄 수 있으며 나는 클래스 명과 동일한 이름으로 지정했다
+
+<br>
+
+```swift
+@IBAction func tapCodePushButton(_ sender: UIButton) {
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "CodePushViewController") else { return }
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+```
+
+그 후 다음과 같이 생성된 인스턴스를 `pushViewController` 의 인자로 넘겨주면 구현이 완료되며 실행하였을 때 동일하게 작동하는 것을 볼 수 있다
+
+<br>
+
+## Code로 Present 기능 구현
+
+---
+
+코드로 Present 하는 것도 사용하는 메서드만 다르고 나머지는 동일하다
+
+<br>
+
+<img width="819" alt="스크린샷 2022-02-14 시간: 01 44 58" src="https://user-images.githubusercontent.com/84072084/153765339-3d1285ee-db77-4bb9-9077-0b8fe299484a.png">
+
+`UIButton` 에 `Action` 함수 추가하기
+
+<br>
+
+<img width="260" alt="스크린샷 2022-02-14 시간: 01 45 57" src="https://user-images.githubusercontent.com/84072084/153765389-5cca66d6-4bf9-46ec-8acc-9c0fde0efd92.png">
+
+`Storyboard ID` 에 `identifier` 설정하기
+
+<br>
+
+```swift
+guard let viewController = self.storyboard?.instantiateViewController(identifier: "CodePresentViewController") else { return }
+```
+
+이동하고자 하는 뷰 컨트롤러를 인스턴스화 한 후에
+
+```swift
+func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil)
+```
+
+다음 `present` 메서드에 present할 뷰 컨트롤러, 애니메이션 여부, `completion` 을 적어주면 된다
+
+> 첨언을 덧붙이자면, 화면 전환은 *비동기 방식*으로 처리되어 화면을 불러오는 작업과 동시에 다음 코드를 실행하므로 실패할 가능성이 있어 `completion` 인자를 활용하여 처리하는 것이 좋다고 한다
+> 
+
+<br>
+
+```swift
+@IBAction func tapCodePresentButton(_ sender: UIButton) {
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "CodePresentViewController") else { return }
+        self.present(viewController, animated: true, completion: nil)
+    }
+```
+
+실행해 보면, 새로운 뷰 컨트롤러가 `present` 되는 것을 확인할 수 있다
