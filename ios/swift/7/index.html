@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="en" mode="dark" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.1" /><meta property="og:title" content="Swift 제어문(control flow)" /><meta property="og:locale" content="en" /><meta name="description" content="DAY 07" /><meta property="og:description" content="DAY 07" /><link rel="canonical" href="https://xpexpe.github.io/ios/swift/7/" /><meta property="og:url" content="https://xpexpe.github.io/ios/swift/7/" /><meta property="og:site_name" content="공부하는 준현" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2022-01-11T20:30:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Swift 제어문(control flow)" /><meta name="twitter:site" content="@" /><meta name="google-site-verification" content="googled7c358fc445c7b58" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-01-11T20:30:00+09:00","datePublished":"2022-01-11T20:30:00+09:00","description":"DAY 07","headline":"Swift 제어문(control flow)","mainEntityOfPage":{"@type":"WebPage","@id":"https://xpexpe.github.io/ios/swift/7/"},"url":"https://xpexpe.github.io/ios/swift/7/"}</script><title>Swift | 제어문(control flow) | 공부하는 준현</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="공부하는 준현"><meta name="application-name" content="공부하는 준현"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="https://avatars.githubusercontent.com/u/84072084?v=4" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">공부하는 준현</a></div><div class="site-subtitle font-italic">Love APPLE Love iOS</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <a href="https://github.com/xpexpe" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://twitter.com/" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['xpexpe3','icloud.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>Swift | 제어문(control flow)</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>Swift | 제어문(control flow)</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> JUNHYEON KIM </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Tue, Jan 11, 2022, 8:30 PM +0900" >Jan 11<i class="unloaded">2022-01-11T20:30:00+09:00</i> </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1216 words">6 min read</span></div></div><div class="post-content"><h2 id="day-07"><code class="language-plaintext highlighter-rouge">DAY 07</code></h2><p><em>제어문(control-flow)</em></p><h1 id="for"><strong>For</strong></h1><hr /><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="c1">// swift3 이후 없어진 문법</span>
+<span class="k">for</span> <span class="k">var</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">+=</span><span class="mi">1</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// 다음과 같이 수정해야 함</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="mi">10</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="for-in-반복문"><strong>For-in 반복문</strong></h2><p><code class="language-plaintext highlighter-rouge">for-in</code> 반복문은 컬렉션 또는 숫자 범위 내에 있는 목록을 반복</p><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="k">for</span> <span class="n">상수명</span> <span class="k">in</span> <span class="n">컬렉션</span> <span class="n">또는</span> <span class="n">범위</span> <span class="p">{</span>
+    <span class="c1">// code</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>다음과 같이 <code class="language-plaintext highlighter-rouge">_</code> 로 참조체<code class="language-plaintext highlighter-rouge">(i)</code> 생략할 수 있다</p><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h3 id="배열의-항목을-접근하는-방법">배열의 항목을 접근하는 방법</h3><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="k">let</span> <span class="nv">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Anna"</span><span class="p">,</span> <span class="s">"Alex"</span><span class="p">,</span> <span class="s">"Brian"</span><span class="p">,</span> <span class="s">"Jack"</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="k">in</span> <span class="n">names</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h3 id="dictionary의-항목-접근">dictionary의 항목 접근</h3><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="k">let</span> <span class="nv">numberOfLegs</span> <span class="o">=</span> <span class="p">[</span><span class="s">"spider"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">"ant"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">"cat"</span><span class="p">:</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">animalName</span><span class="p">,</span> <span class="n">legCount</span><span class="p">)</span> <span class="k">in</span> <span class="n">numberOfLegs</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">animalName</span><span class="se">)</span><span class="s">s have </span><span class="se">\(</span><span class="n">legCount</span><span class="se">)</span><span class="s"> legs"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span text-data=" Plaintext "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>spiders have 8 legs
+ants have 6 legs
+cats have 4 legs
+</pre></table></code></div></div><h1 id="repeat-while-반복문">repeat-while 반복문</h1><hr /><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="k">repeat</span> <span class="p">{</span>
+    <span class="c1">///</span>
+<span class="p">}</span> <span class="nf">whlie</span> <span class="p">(</span><span class="n">조건식</span><span class="p">)</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">do-while</code>이 아닌 <code class="language-plaintext highlighter-rouge">repeat-while</code>로 사용한다</p><h1 id="if-문">if 문</h1><hr /><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..&lt;</span><span class="mi">10</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="p">{</span> <span class="k">break</span> <span class="p">}</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p><strong>2번 라인</strong></p><p>다른 프로그래밍 언어들과는 다르게, 스위프트에서는 <code class="language-plaintext highlighter-rouge">if</code>문 다음의 실행 코드가 한 줄이라도 괄호(<code class="language-plaintext highlighter-rouge">{}</code>)를 필수적으로 사용해야 함</p><p><strong>if문 조건에서 콤마의 의미</strong></p><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">&amp;&amp;</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="n">c</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"true"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">,</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="n">c</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"true"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>동일한 코드이다</p><p>스위프트에서 콤마의 의미는 논리적인 <code class="language-plaintext highlighter-rouge">AND</code>연산의 의미와 같다</p><hr /><h1 id="guard-문">guard 문</h1><hr /><p><code class="language-plaintext highlighter-rouge">guard</code>문은 표현식이 거짓(false)로 판달될 경우에 수행될 <code class="language-plaintext highlighter-rouge">else</code> 절을 반드시 포함해야 함</p><ul><li><code class="language-plaintext highlighter-rouge">else</code> 절에 속한 코드는 현재의 코드 흐름을 빠져 나갈 수 있는 구문(<code class="language-plaintext highlighter-rouge">return, break, continue, throw</code> 구문)을 반드시 포함해야 함<li>또 다른 함수를 <code class="language-plaintext highlighter-rouge">else</code> 코드 블록 안에서 호출할 수도 있음</ul><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="k">guard</span> <span class="o">&lt;</span><span class="n">boolean</span> <span class="n">표현식</span><span class="o">&gt;</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// 표현식이 거짓일 경우에 실행될 코드</span>
+    <span class="o">&lt;</span><span class="n">코드</span> <span class="n">블록을</span> <span class="n">빠져</span> <span class="n">나갈</span> <span class="n">구문</span><span class="o">&gt;</span>
+<span class="p">}</span>
+<span class="c1">// 표현식이 참일 경우에 실행되는 코드</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">guard</code>문은 기본적으로 특정 조건에 맞지 않을 경우에 현재의 함수나 반복문에서 빠져 나갈 수 있도록 하는 ‘<strong>조기 출구(early exit)</strong>’ 전략을 제공</p><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="kd">func</span> <span class="nf">multiplyByTen</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">number</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"10보다 큼"</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">number</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">multiplyByTen</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+</pre></table></code></div></div><p>값을 unwrap하기 위하여 옵셔널 바인딩 하고, 그 값이 10보다 작은지 검사</p><ul><li>변수를 언래핑할 수 없거나 값이 10보다 크면, <code class="language-plaintext highlighter-rouge">else</code>절이 실행되어 에러 메시지 출력 후 <code class="language-plaintext highlighter-rouge">return</code><li>언래핑된 <code class="language-plaintext highlighter-rouge">number</code>변수를 <code class="language-plaintext highlighter-rouge">guard</code>문 밖에 있는 코드가 사용할 수 있음 (<code class="language-plaintext highlighter-rouge">if</code>문을 이용할 시 못함)</ul><h2 id="if-let-vs-guard-let"><strong>if let vs guard let</strong></h2><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre><td class="rouge-code"><pre><span class="kd">func</span> <span class="nf">printName</span><span class="p">(</span><span class="nv">firstName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">lastName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">lName</span> <span class="o">=</span> <span class="n">lastName</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">lName</span><span class="p">,</span> <span class="n">firstName</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"성이 없음"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">lName</span> <span class="o">=</span> <span class="n">lastName</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"성이 없음"</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">lName</span><span class="p">,</span> <span class="n">firstName</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">printName</span><span class="p">(</span><span class="nv">firstName</span><span class="p">:</span> <span class="s">"길동"</span><span class="p">,</span> <span class="nv">lastName</span><span class="p">:</span> <span class="s">"홍"</span><span class="p">)</span>
+</pre></table></code></div></div><h1 id="switch-case문">switch-case문</h1><hr /><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="k">switch</span> <span class="n">표현식</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nv">match1</span><span class="p">:</span>
+        <span class="n">구문</span>
+    <span class="k">case</span> <span class="nv">match2</span><span class="p">:</span>
+        <span class="n">구문</span>
+    <span class="k">case</span> <span class="n">match3</span><span class="p">,</span> <span class="nv">match4</span><span class="p">:</span>
+        <span class="n">구문</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="n">구문</span>
+<span class="p">}</span>
+</pre></table></code></div></div><blockquote><p><strong>각 case문 마지막에 break가 자동으로 들어있음</strong></p></blockquote><p>각 <code class="language-plaintext highlighter-rouge">case</code>에는 최소 한가지 이상의 실행문이 들어있어야 함</p><p><code class="language-plaintext highlighter-rouge">comma(,)</code>를 이용하여 실행될 공통 코드로 그룹 <code class="language-plaintext highlighter-rouge">case</code>문을 만들 수 있음</p><h2 id="switch-case문에서의-범위-지정-매칭">switch-case문에서의 범위 지정 매칭</h2><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre><td class="rouge-code"><pre><span class="k">let</span> <span class="nv">num</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="k">let</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">String</span>
+<span class="k">switch</span> <span class="n">num</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">0</span><span class="o">...</span><span class="mi">9</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="s">"한자리 수"</span>
+    <span class="k">case</span> <span class="mi">0</span><span class="o">...</span><span class="mi">99</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="s">"두자리 수"</span>
+    <span class="k">case</span> <span class="mi">100</span><span class="o">...</span><span class="mi">999</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="s">"세자리 수"</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="s">"네자리 수 이상"</span>
+<span class="p">}</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">count</span><span class="se">)</span><span class="s">입니다."</span><span class="p">)</span>
+</pre></table></code></div></div><h2 id="switch-case에서-where절-사용하기">switch-case에서 where절 사용하기</h2><p><code class="language-plaintext highlighter-rouge">where</code>절을 <code class="language-plaintext highlighter-rouge">switch case</code>에 부가적인 조건을 추가하기 위하여 사용함</p><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="k">var</span> <span class="nv">temperature</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="k">switch</span> <span class="p">(</span><span class="n">temperature</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">0</span><span class="o">...</span><span class="mi">49</span> <span class="k">where</span> <span class="n">temperature</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Cold and even"</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">50</span><span class="o">...</span><span class="mi">79</span> <span class="k">where</span> <span class="n">temperature</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Warm and even"</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">80</span><span class="o">...</span><span class="mi">110</span> <span class="k">where</span> <span class="n">temperature</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Hot and even"</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Temperature out of range or odd"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">if</code>문에서는 <code class="language-plaintext highlighter-rouge">comma(,)</code>를 통하여 부가적인 조건을 추가(논리적인 AND) 하고, <code class="language-plaintext highlighter-rouge">switch, catch, while, guard, for</code> 등에서는 <code class="language-plaintext highlighter-rouge">where</code>을 사용하여 부가적인 조건을 추가함</p><h1 id="fallthrough">fallthrough</h1><hr /><p><code class="language-plaintext highlighter-rouge">swift</code>에서는 <code class="language-plaintext highlighter-rouge">case</code>문 다음에 <code class="language-plaintext highlighter-rouge">break</code>문을 포함할 필요가 없음</p><p>일치하는 <code class="language-plaintext highlighter-rouge">case</code>문을 만나면 자동으로 빠져나옴</p><p><code class="language-plaintext highlighter-rouge">case</code>별로 빠져나가지 않고 아래로 계속 내려가게 하려면 <code class="language-plaintext highlighter-rouge">fallthrough</code>문 사용</p><div class="language-swift highlighter-rouge"><div class="code-header"> <span text-data=" Swift "><i class="fa-fw fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="k">var</span> <span class="nv">value</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">switch</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"4"</span><span class="p">)</span>
+        <span class="k">fallthrough</span>
+    <span class="k">case</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"5"</span><span class="p">)</span>
+        <span class="k">fallthrough</span>
+    <span class="k">case</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"6"</span><span class="p">)</span>
+        <span class="k">fallthrough</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"7"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 4 5 6 7</span>
+</pre></table></code></div></div></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/ios/'>iOS</a>, <a href='/categories/swift/'>Swift</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/for/" class="post-tag no-text-decoration" >for</a> <a href="/tags/guard/" class="post-tag no-text-decoration" >guard</a> <a href="/tags/switch/" class="post-tag no-text-decoration" >switch</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Swift | 제어문(control flow) - 공부하는 준현&url=https://xpexpe.github.io/ios/swift/7/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Swift | 제어문(control flow) - 공부하는 준현&u=https://xpexpe.github.io/ios/swift/7/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=Swift | 제어문(control flow) - 공부하는 준현&url=https://xpexpe.github.io/ios/swift/7/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" title-succeed="Link copied successfully!"> </i> </span></div></div></div><script src="https://utteranc.es/client.js" repo="xpexpe/blog-comments" issue-term="pathname" theme="github-dark" crossorigin="anonymous" async> </script></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/ios/app/9/">iOS | 앱의 시작 화면 구성하기 (Launch Screen)</a><li><a href="/ios/app/8/">iOS | 빈 공간 터치시 키보드 내려가게 하기</a><li><a href="/ios/app/7/">iOS | 화면 간 데이터 전달 (1)</a><li><a href="/ios/app/4/">iOS | 화면 전환 방법(Segue)</a><li><a href="/ios/app/6/">iOS | ViewController 생명 주기(Life Cycle)</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/function/">function</a> <a class="post-tag" href="/tags/present/">present</a> <a class="post-tag" href="/tags/push/">push</a> <a class="post-tag" href="/tags/segue/">segue</a> <a class="post-tag" href="/tags/class/">class</a> <a class="post-tag" href="/tags/delegate/">delegate</a> <a class="post-tag" href="/tags/inheritance/">inheritance</a> <a class="post-tag" href="/tags/11365/">11365</a> <a class="post-tag" href="/tags/access-control/">access control</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/ios/swift/1/"><div class="card-body"> <span class="timeago small" >Dec 27, 2021<i class="unloaded">2021-12-27T00:50:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Swift | var, let</h3><div class="text-muted small"><p> DAY 01 var, let keyword 사용 및 차이점 var, let 제일 먼저 우리가 공부할 때 이 키워드를 먼저 사용하게 되는 것 같다 앞서 Java 를 공부했었을 때에는, var 키워드를 뒤따라 오는(대입시키는) 자료의 데이터타입을 몰라도 알아서 데이터타입이 결정된다 이런 식으로만 사용했었던 것 같다 var : 변수 var은 변수...</p></div></div></a></div><div class="card"> <a href="/ios/swift/2/"><div class="card-body"> <span class="timeago small" >Dec 30, 2021<i class="unloaded">2021-12-30T01:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Swift | 조건문(if)</h3><div class="text-muted small"><p> DAY 02 Swift에서 조건을 표현하는 방법 조건을 표현하는 방법 처음 보고 느낀것은 뭔가 파이썬 닮은거 같았다고 느꼈다 사실 파이썬도 잘 알지는 못한다 var onoff : Bool = false if (onoff == true) { print("on") } if (onoff != true) { print("off")...</p></div></div></a></div><div class="card"> <a href="/ios/swift/3/"><div class="card-body"> <span class="timeago small" >Jan 1<i class="unloaded">2022-01-01T00:30:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Swift | 요소 반복(foreach)</h3><div class="text-muted small"><p> DAY 03 foreach 반복문 표현하기 for-each 자바에서는 이 개념을 배웠었는데 배열이나 컬랙션의 원소들을 탐색할 때 사용하였던 것 같다 var myArray : [Int] = [0,1,2,3,4,5,6,7,8,9,10] for item in myArray { print("item : \(item)") } myArray...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/ios/swift/6/" class="btn btn-outline-primary" prompt="Older"><p>Swift | 연산자(operator)</p></a> <a href="/ios/swift/8/" class="btn btn-outline-primary" prompt="Newer"><p>Swift | 함수 기초(function)</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2022 <a href="https://www.notion.so/xpexpe/efd52cc45b584be1aed54ea3fde188a6">JUNHYEON KIM</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/function/">function</a> <a class="post-tag" href="/tags/present/">present</a> <a class="post-tag" href="/tags/push/">push</a> <a class="post-tag" href="/tags/segue/">segue</a> <a class="post-tag" href="/tags/class/">class</a> <a class="post-tag" href="/tags/delegate/">delegate</a> <a class="post-tag" href="/tags/inheritance/">inheritance</a> <a class="post-tag" href="/tags/11365/">11365</a> <a class="post-tag" href="/tags/access-control/">access control</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=G-D7JNYWV5FE"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-D7JNYWV5FE'); }); </script>

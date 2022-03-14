@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://xpexpe.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://xpexpe.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-03-14T23:48:32+09:00</updated><id>https://xpexpe.github.io/feed.xml</id><title type="html">공부하는 준현</title><subtitle>Current Student at CSU Majoring in Computer Science</subtitle><entry><title type="html">Computer Archithecture | Performance</title><link href="https://xpexpe.github.io/study/computer%20archithecture/1/" rel="alternate" type="text/html" title="Computer Archithecture | Performance" /><published>2022-03-14T21:00:00+09:00</published><updated>2022-03-14T21:00:00+09:00</updated><id>https://xpexpe.github.io/study/computer%20archithecture/1</id><content type="html" xml:base="https://xpexpe.github.io/study/computer%20archithecture/1/"><![CDATA[<h1 id="performance">Performance</h1>
+<hr />
+
+<p>3/14</p>
+
+<Terms>
+
+CPU Time
+한 컴퓨터 프로그램이 CPU를 차지하여 일을 한 시간
+
+Clock Rate (클럭 속도)
+CPU의 초당 클럭 수, 초당 사이클 수
+
+Clock Cycles
+어떤 일을 수행하기 위해 CPU가 몇개의 clock을 사용하는지
+
+CPI (Clock cycles Per Instruction)
+명령어 하나당 평균 클럭 사이클수
+
+---
+
+CPI	= (CPU Time * Clock Rate) / Instruction Count
+	= Clock Cycles / Instruction Count
+
+총 클럭 사이클 수에서 총 명령어 개수를 나누면, 명령어 하나당 평균 클럭 사이클 수가 나올것이다
+
+Average cycles per instruction (평균 명렁어 클럭 사이클수)
+
+* Determined by CPU hardware  (CPU 하드웨어에 따라서 다름)
+* If different instructions have different CPI
+* (다른명령어들이 다른 CPI수를 가지고있다면 평균값에 당연한 영향을 끼침)
+    * Average CPI affected by instruction mix
+
+
+Clock Cycle = Instruction Count * Cycles per Instruction
+
+CPU Time
+= CPU Clock Cycles * Clock Cycle Time 
+= CPU Clock Cycles / Clock Rate
+
+총 클럭 수에 클럭 사이클 당 실행시간을 곱하면 CPU가 일을 한 시간이 나온다
+￼
+클럭 사이클 당 실행시간 * 총 클럭 수
+CPI는 Clock Per Instruction이고, 여기에 CPI와 I(Instruction)을 곱해서 나타낼 수 있음
+
+Understand
+CPU - 1GHz 속도 10개 Instruction 수행
+
+1 Instruction당 15 cycle이라면, 10 Instruction?
+= 150 cycle
+
+CPU Time?
+= 150 (Cycles) * 1GHz/1 (Cycle time)
+
+1초에 1G(10^9)번의 rate 이니까 Time은 역수
+
+Performance improved by
+*   Reducing Number of Clock Cycles ( 클럭수의 싸이클수을 줄일때 비로소 성능 업그레이드)
+*   Increasing clock rate ( 클럭 레이트를 올릴때)
+*   Hardware designer must often trade off clock rate against cycle count 
+
+￼
+
+그래서 이제 CPU time이라는 것은, 한 프로그램이 CPU를 차지하여 일을 한 시간을 뜻하는 것이고
+
+이는 프로그램 당 명령어 개수, 명령어 하나가 사용하는 사이클 수, 한 사이클 당 소요시간을 곱하면 나온다
+
+
+---
+
+암달의 법칙
+
+￼
+
+E 향상으로 인한 Speedup(성능의 증가)
+
+성능의 증가는 곧 실행시간의 감소를 뜻하므로 성능의 증가율을 따질때에는 향상전/향상후 시간이 되는 것이 맞다
+
+</Terms>]]></content><author><name></name></author><category term="Study" /><category term="computer archithecture" /><category term="performance" /><summary type="html"><![CDATA[Performance]]></summary></entry><entry><title type="html">iOS | APP 내 디스플레이 모드 설정하기 (Dark, Light)</title><link href="https://xpexpe.github.io/ios/app/11/" rel="alternate" type="text/html" title="iOS | APP 내 디스플레이 모드 설정하기 (Dark, Light)" /><published>2022-03-06T03:20:00+09:00</published><updated>2022-03-06T03:20:00+09:00</updated><id>https://xpexpe.github.io/ios/app/11</id><content type="html" xml:base="https://xpexpe.github.io/ios/app/11/"><![CDATA[<h1 id="app-내-디스플레이-모드-설정하기-dark-light">APP 내 디스플레이 모드 설정하기 (Dark, Light)</h1>
+<hr />
+
+<p><strong>개인적으로 토이 프로젝트를 진행하다가, 당연히 기본값인 Light Mode로 생각하고 개발을 하고 있었는데, 다크 모드를 사용하고 있는 나의 iPhone에서 실행시키니 background color가 검정색으로 나오고 난리가 났다</strong></p>
+
+<p>지금 대응하기에는 이미지도 설정 해야하고 해서 라이트모드로만 실행되도록 하고자 한다</p>
+
+<p><br /></p>
+
+<h2 id="앱-디스플레이-모드-설정">앱 디스플레이 모드 설정</h2>
+<hr />
+
+<p><img width="337" alt="image" src="https://user-images.githubusercontent.com/84072084/156895349-6ad7209d-d708-45e6-934f-3bb41cd21dfb.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Project Files</code> - <code class="language-plaintext highlighter-rouge">Info.plist</code></p>
+
+<p><br /></p>
+
+<p><img width="689" alt="image" src="https://user-images.githubusercontent.com/84072084/156895361-00b1d431-fe96-4ad6-bd62-ba7bbbc0f74a.png" /></p>
+
+<p>아무곳이나 클릭하면 옆에 + 버튼이 생기는데, + 버튼을 눌러준다</p>
+
+<p><br /></p>
+
+<p><img width="630" alt="image" src="https://user-images.githubusercontent.com/84072084/156895376-39716375-7ada-49b2-b394-1e41f9a69463.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Key</code>에 해당하는 칸에는 <strong>Appearance</strong> 를 입력하고 <code class="language-plaintext highlighter-rouge">Value</code>에 해당하는 칸에는 원하는 Display Mode 를 적어주면 된다</p>
+
+<p>나는 이 앱을 Light Mode로만 실행시키고 싶기 때문에, <code class="language-plaintext highlighter-rouge">Light</code> 라고 명시하여 라이트 모드로 실행되도록 제한하였다</p>]]></content><author><name></name></author><category term="iOS" /><category term="APP" /><category term="dark mode" /><category term="display" /><category term="light mode" /><summary type="html"><![CDATA[APP 내 디스플레이 모드 설정하기 (Dark, Light)]]></summary></entry><entry><title type="html">iOS | iPhone Could not launch 오류 해결법</title><link href="https://xpexpe.github.io/ios/app/10/" rel="alternate" type="text/html" title="iOS | iPhone Could not launch 오류 해결법" /><published>2022-03-06T02:30:00+09:00</published><updated>2022-03-06T02:30:00+09:00</updated><id>https://xpexpe.github.io/ios/app/10</id><content type="html" xml:base="https://xpexpe.github.io/ios/app/10/"><![CDATA[<h1 id="iphone-couldnt-launch-오류-해결법">iPhone Couldn’t Launch 오류 해결법</h1>
+<hr />
+
+<p><img width="951" alt="image" src="https://user-images.githubusercontent.com/84072084/156893856-d0abaf10-c931-4535-a24f-de20862cd711.png" /></p>
+
+<p><br /></p>
+
+<p><strong>다음과 같은 오류는 가상머신이 아닌 자신의 iOS Device를 통하여 프로젝트를 실행시킬 때 발생합니다</strong></p>
+
+<p><br /></p>
+
+<p><img src="https://user-images.githubusercontent.com/84072084/156893867-0e1f2c02-d787-4245-9e8e-8cbb2e6dbf57.jpeg" alt="IMG_7229D9ECC323-1" /></p>
+
+<p>나의 Device에서는 다음과 같은 오류메시지가 발생하면서 앱이 실행되지 않는 상황이 됩니다</p>
+
+<p>이는 다음과 같은 단계로의 iPhone 설정을 통하여 해결할 수 있습니다</p>
+
+<p><br /></p>
+
+<h2 id="설정법">설정법</h2>
+<hr />
+
+<p><img width="500" alt="img" src="https://user-images.githubusercontent.com/84072084/156893978-0e3f0e80-c4eb-4b0e-ba86-59919ad67c1c.PNG" />
+<img width="500" alt="img" src="https://user-images.githubusercontent.com/84072084/156893981-29b86c62-c3d0-464b-b4a6-e9242a939814.PNG" /></p>
+
+<h3 id="iphone-설정---일반---vpn-및-기기-관리에-들어갑니다">iPhone 설정 - 일반 - VPN 및 기기 관리에 들어갑니다</h3>
+
+<p><br /></p>
+
+<p><img width="500" alt="img" src="https://user-images.githubusercontent.com/84072084/156893982-5b69000b-fde6-460a-ab0f-0194d2130c26.PNG" />
+<img width="500" alt="img" src="https://user-images.githubusercontent.com/84072084/156893983-735e6d31-fb1e-43ac-a161-0fd84daa39b0.PNG" /></p>
+
+<h3 id="해당하는-개발자-앱에-들어갑니다-신뢰하지-않음이라는-키워드를-확인할-수-있습니다">해당하는 개발자 앱에 들어갑니다. ‘신뢰하지 않음’이라는 키워드를 확인할 수 있습니다</h3>
+
+<h3 id="그-후-파란색-바탕의-apple-development--를-클릭해-줍니다">그 후 파란색 바탕의 ‘Apple Development: ~~~’ 를 클릭해 줍니다</h3>
+
+<p><br /></p>
+
+<p><img width="500" alt="img" src="https://user-images.githubusercontent.com/84072084/156893984-204bb064-3fcc-408e-a12a-cfb2b92014eb.PNG" /></p>
+
+<h3 id="다음과-같이-창에서-신뢰-버튼을-누르면-정상적으로-실행됩니다">다음과 같이 창에서 신뢰 버튼을 누르면 정상적으로 실행됩니다</h3>]]></content><author><name></name></author><category term="iOS" /><category term="APP" /><category term="Could not launch" /><category term="신뢰하지 않는 개발자" /><summary type="html"><![CDATA[iPhone Couldn’t Launch 오류 해결법]]></summary></entry><entry><title type="html">iOS | 앱의 시작 화면 구성하기 (Launch Screen)</title><link href="https://xpexpe.github.io/ios/app/9/" rel="alternate" type="text/html" title="iOS | 앱의 시작 화면 구성하기 (Launch Screen)" /><published>2022-03-06T01:00:00+09:00</published><updated>2022-03-06T02:17:22+09:00</updated><id>https://xpexpe.github.io/ios/app/9</id><content type="html" xml:base="https://xpexpe.github.io/ios/app/9/"><![CDATA[<h1 id="앱의-시작-화면-구성하기-launch-screen">앱의 시작 화면 구성하기 (Launch Screen)</h1>
+<hr />
+
+<p><img width="717" alt="image" src="https://user-images.githubusercontent.com/84072084/156891021-880c272e-f185-4c28-b4b4-870c7c7be0a4.png" /></p>
+
+<p>시작 화면이란 앱의 첫번째 화면으로 애플의 공식 문서에 따르면, 앱이 빠르고 반응이 좋다는 인상을 남기기 위한 화면입니다</p>
+
+<p>앱을 신속하게 실행하고 즉시 사용할 수 있다는 인식을 향상시키기 위한 것이라고 합니다</p>
+
+<p><br /></p>
+
+<p><img width="300" alt="kakaotalk" src="https://user-images.githubusercontent.com/84072084/156890901-0e9b884e-d730-4121-bb0e-882dd80f6196.PNG" /></p>
+
+<p>카카오톡을 켜면, 다음과 같은 화면이 나오는데 이 또한 <code class="language-plaintext highlighter-rouge">LaunchScreen</code>에 해당하는 부분입니다</p>
+
+<p>단순 내가 실행시키는 앱을 광고하거나 보여주는 용도로만 사용되는 것은 아니며 앱의 초기 설정(다양한 서비스 구성, 초기화 작업 및 필요한 요소들을 불러오는 작업이나 각종 서비스를 연결하는 작업) 등을 실행하는 초기의 단계로도 볼 수 있습니다</p>
+
+<p><br /></p>
+
+<h2 id="launch-screen-사용하기">Launch Screen 사용하기</h2>
+<hr />
+
+<p><img width="342" alt="스크린샷 2022-03-06 시간: 00 52 17" src="https://user-images.githubusercontent.com/84072084/156890676-4f8fc656-3293-41f1-9fe6-4ae021881bfc.png" /></p>
+
+<p>대부분 프로젝트를 만들게 되면, 다음과 같이 <code class="language-plaintext highlighter-rouge">LaunchScreen.storyboard</code>라는 파일이 기본적으로 만들어집니다</p>
+
+<p><img width="906" alt="스크린샷 2022-03-06 시간: 00 56 31" src="https://user-images.githubusercontent.com/84072084/156890827-83ca2ec2-2bbc-4a88-8142-52530b3b9d0a.png" /></p>
+
+<p>이는 프로젝트의 설정에서 <strong>App Icons and Launch Image</strong> 에서 <strong>Launch Screen File</strong> 에서 앱의 <code class="language-plaintext highlighter-rouge">Launch Screen</code> 파일을 연결시킬 수 있습니다</p>
+
+<p><br /></p>
+
+<p><strong>본격적으로 LaunchScreen.storyboard 파일을 살펴보면</strong></p>
+
+<p><img width="650" alt="image" src="https://user-images.githubusercontent.com/84072084/156891410-a2efedd3-064e-4e7b-af8b-90c45502d7d0.png" /></p>
+
+<p>다음과 같이 뷰 컨트롤러가 존재하고 여기에 Launch Screen을 구성해 주면 됩니다</p>
+
+<p><br /></p>
+
+<p><img width="304" alt="image" src="https://user-images.githubusercontent.com/84072084/156891480-9808e745-613b-4b01-84c9-3ebfd41939cc.png" /></p>
+
+<p>저는 테스트를 위하여 다음과 같이 <code class="language-plaintext highlighter-rouge">background color</code>를 파란색으로 설정하였고, <code class="language-plaintext highlighter-rouge">Label</code>을 배치하여 실행시켜 보았습니다</p>
+
+<p>실행을 시켜 보았더니, 약 1초가 안되는 시간동안 잠깐 <strong>Launch Screen</strong>이 등장하고 main으로 넘어가는 것을 볼 수 있었고 저는 Launch Screen이 보여지는 시간을 조금 늘려보고자 합니다</p>
+
+<p><br /></p>
+
+<h2 id="launch-screen-딜레이-주기">Launch Screen 딜레이 주기</h2>
+<hr />
+
+<p>프로젝트 파일 안에 있는 <code class="language-plaintext highlighter-rouge">AppDelegate.swift</code> 파일을 열면</p>
+
+<p><img width="743" alt="image" src="https://user-images.githubusercontent.com/84072084/156891591-1bdcac7c-0177-429f-867f-d591b5124d87.png" /></p>
+
+<p>다음과 같이 첫번째에 <code class="language-plaintext highlighter-rouge">didFinishLaunchingWithOptions</code> 인자를 가진 메서드가 존재합니다</p>
+
+<p>이 메서드는 프로그램이 실행될 준비가 완료되면 true를 반환하는 메서드입니다</p>
+
+<p>따라서 이 메서드에서 <code class="language-plaintext highlighter-rouge">true</code>를 리턴하는 시간을 <code class="language-plaintext highlighter-rouge">sleep()</code> 메서드를 통하여 지연시키면 <strong>Launch Screen</strong>이 노출되는 시간을 지연시킬 수 있게 됩니다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="c1">// Override point for customization after application launch.</span>
+
+    <span class="nf">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>저는 다음과 같이 <code class="language-plaintext highlighter-rouge">sleep(2)</code> 메서드를 이용하여 2초동안 지연되도록 하였습니다</p>
+
+<p>실행 결과 정상적으로 작동됨을 확인하였습니다</p>
+
+<p><br /></p>
+
+<h2 id="reference">Reference</h2>
+<hr />
+
+<p><a href="https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/launch-screen/">https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/launch-screen/</a></p>
+
+<p><a href="https://developer.apple.com/documentation/uikit/app_and_environment/responding_to_the_launch_of_your_app">https://developer.apple.com/documentation/uikit/app_and_environment/responding_to_the_launch_of_your_app</a></p>]]></content><author><name></name></author><category term="iOS" /><category term="APP" /><category term="launchscreen" /><summary type="html"><![CDATA[앱의 시작 화면 구성하기 (Launch Screen)]]></summary></entry><entry><title type="html">iOS | 빈 공간 터치시 키보드 내려가게 하기</title><link href="https://xpexpe.github.io/ios/app/8/" rel="alternate" type="text/html" title="iOS | 빈 공간 터치시 키보드 내려가게 하기" /><published>2022-03-05T22:00:00+09:00</published><updated>2022-03-06T00:02:58+09:00</updated><id>https://xpexpe.github.io/ios/app/8</id><content type="html" xml:base="https://xpexpe.github.io/ios/app/8/"><![CDATA[<h1 id="빈-공간-터치시-키보드-내려가게-하기">빈 공간 터치시 키보드 내려가게 하기</h1>
+<hr />
+
+<p>우리가 iOS에서 <code class="language-plaintext highlighter-rouge">TextField</code>에 키보드로 글을 작성하다가 빈 공간을 터치하면 키보드가 자연스럽게 내려가게 됩니다</p>
+
+<p>특히 iOS 특성 상 물리적 뒤로가기 키가 존재하지 않기 때문에 더 이런 부분이 중요한데요</p>
+
+<p>기본적으로 이 기능을 구현해주지는 않기 때문에 우리가 코드를 통하여 작성해 주어야 합니다</p>
+
+<p><br /></p>
+
+<h2 id="일반적인-uiview를-사용하는-경우">일반적인 UIView를 사용하는 경우</h2>
+<hr />
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">override</span> <span class="kd">func</span> <span class="nf">touchesBegan</span><span class="p">(</span><span class="n">_</span> <span class="nv">touches</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UITouch</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">with</span> <span class="nv">event</span><span class="p">:</span> <span class="kt">UIEvent</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="nf">endEditing</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>일반적인 <code class="language-plaintext highlighter-rouge">UIView</code>를 사용하는 환경이라면, <code class="language-plaintext highlighter-rouge">touchesBegan</code>이라는 메서드를 오버라이딩 하여 화면을 터치했을 때에 해야할 작업을 이 메서드 안에 집어넣어 주면 됩니다</p>
+
+<p>우리는 작성하기 위해 올렸던 키보드를 다시 내려야 하기 때문에 다음과 같이</p>
+
+<p><code class="language-plaintext highlighter-rouge">endEditing(true)</code>를 호출하여 키보드가 사라지게 만들 수 있습니다</p>
+
+<p><br /></p>
+
+<h2 id="tableview-혹은-scrollview를-사용하는-경우">tableView 혹은 ScrollView를 사용하는 경우</h2>
+<hr />
+
+<p>제가 <code class="language-plaintext highlighter-rouge">scrollView</code>를 활용하여 앱을 구성하다가 빈 공간을 터치하면 키보드가 사라지게 만들기 위해 앞서 설명하였던 <code class="language-plaintext highlighter-rouge">touchesBegan</code> 메서드를 오버라이딩 하는 방법으로 구현해 보았는데 기능이 정상적으로 작동하지 않았습니다</p>
+
+<p>그 이유가 무엇일까 검색해 보다가 찾았던 결과는</p>
+
+<p><code class="language-plaintext highlighter-rouge">TableView</code>나 <code class="language-plaintext highlighter-rouge">ScrollView</code>의 경우에는 일반적으로 스크롤을 이용하기 때문에 스크롤을 하기 위한 한번의 터치 동작이 발생하는데요, 그렇기 때문에 이를 스크롤을 하기 위한 동작으로 생각되어 무시가 된다고 합니다</p>
+
+<p>그렇기 때문에 <code class="language-plaintext highlighter-rouge">touchesBegan</code>이나 <code class="language-plaintext highlighter-rouge">touchesMoved</code>가 모두 호출이 되지 않는 것입니다</p>
+
+<p><br /></p>
+
+<p>이 경우 직접 <code class="language-plaintext highlighter-rouge">GestureRecognizer</code>를 추가하여 이를 캐치하도록 만들어야 합니다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+    <span class="n">view</span><span class="o">.</span><span class="nf">addGestureRecognizer</span><span class="p">(</span><span class="kt">UITapGestureRecognizer</span><span class="p">(</span><span class="nv">target</span><span class="p">:</span> <span class="k">self</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="kd">#selector(</span><span class="nf">tapBegan(sender:)</span><span class="kd">)</span><span class="p">))</span>
+<span class="p">}</span>
+
+
+<span class="kd">@objc</span> <span class="kd">func</span> <span class="nf">tapBegan</span><span class="p">(</span><span class="nv">sender</span><span class="p">:</span> <span class="kt">UITapGestureRecognizer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">sender</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="o">.</span><span class="n">ended</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="nf">endEditing</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">sender</span><span class="o">.</span><span class="n">cancelsTouchesInView</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>다음과 같이 작성한다면, 터치가 발생하면 이를 캐치하여 키보드가 사라지게 만들 수 있습니다</p>
+
+<p><br /></p>
+
+<p><img width="600" alt="스크린샷 2022-03-05 시간: 23 35 23" src="https://user-images.githubusercontent.com/84072084/156887899-27b20fca-28b0-4b70-95a4-5420325e37cc.png" /></p>
+
+<p><strong>swift documentation</strong>을 참조하면, 탭 제스처를 인식하는 코드의 예시를 볼 수 있었고</p>
+
+<p>위의 코드에서 <code class="language-plaintext highlighter-rouge">sender.cancelsTouchesInView</code>가 무엇을 뜻하는지 알아보았는데,</p>
+
+<p><img width="600" alt="스크린샷 2022-03-05 시간: 23 40 38" src="https://user-images.githubusercontent.com/84072084/156888057-5c6d73ce-3f00-4de1-ae57-e153e0c1276d.png" /></p>
+
+<p>제스처를 인식하면 나머지 터치 정보들을 뷰로 전달하는지(false) 전달하지 않는지(true, default)를 결정하는 타입 프로퍼티임을 알 수 있었습니다</p>
+
+<p>자세한 정보는 <a href="https://baked-corn.tistory.com/130">https://baked-corn.tistory.com/130</a> 이곳을 참조하였습니다</p>
+
+<p><br /></p>
+
+<h2 id="reference">Reference</h2>
+<hr />
+
+<p><a href="https://www.zehye.kr/ios/2020/12/11/ios_tableview_cell_touch_began/">https://www.zehye.kr/ios/2020/12/11/ios_tableview_cell_touch_began/</a></p>
+
+<p><a href="https://developer.apple.com/documentation/uikit/uitapgesturerecognizer">https://developer.apple.com/documentation/uikit/uitapgesturerecognizer</a></p>]]></content><author><name></name></author><category term="iOS" /><category term="APP" /><category term="endEditing" /><category term="keyboard" /><category term="textfield" /><summary type="html"><![CDATA[빈 공간 터치시 키보드 내려가게 하기]]></summary></entry><entry><title type="html">iOS | 화면 간 데이터 전달 (1)</title><link href="https://xpexpe.github.io/ios/app/7/" rel="alternate" type="text/html" title="iOS | 화면 간 데이터 전달 (1)" /><published>2022-02-22T16:00:00+09:00</published><updated>2022-03-05T23:47:30+09:00</updated><id>https://xpexpe.github.io/ios/app/7</id><content type="html" xml:base="https://xpexpe.github.io/ios/app/7/"><![CDATA[<h1 id="화면-간-데이터-전달-1">화면 간 데이터 전달 (1)</h1>
+<hr />
+
+<p>보통 우리가 앱을 설계할 때, 여러가지 뷰들을 사용하고 그 뷰들 간의 데이터를 서로 주고받는 동작을 수행하도록 설계합니다</p>
+
+<p>처음 Swift를 접했을 때 뷰들 간의 데이터를 전달하는 많은 방법들을 보고, 그냥 뷰들 끼리 스토리보드 내에서 데이터를 공유하면 되는것 아닌가? 라는 생각을 했었습니다</p>
+
+<p>하지만 Swift에서는 각각의 뷰들이 개별 <code class="language-plaintext highlighter-rouge">.nib</code>파일로 이루어지고, 스토리보드는 이런 여러 뷰들에 대한 <code class="language-plaintext highlighter-rouge">.nib</code>파일을 모아둔 개념이며 각각의 뷰들은 개별 파일이기 때문에 연결할 수 있는 방법은 있지만 모든 속성을 스토리 보드 내에서 공유하는 것은 불가능 하다는 사실을 알게 되었습니다</p>
+
+<p><br /></p>
+
+<p>화면 간 데이터를 전달하는 방법은 다음과 같습니다</p>
+
+<ul>
+  <li>Passing Data <strong>Between</strong> View Controllers with Properties (A → B)</li>
+  <li>Passing Data <strong>Between</strong> View Controllers Using Segues (A → B)</li>
+  <li>Passing Data <strong>Back</strong> with Properties and Functions (A ← B)</li>
+  <li>Passing Data <strong>Back</strong> with Delegation</li>
+  <li>Passing Data <strong>Back</strong> with a Closure</li>
+  <li>Passing Data <strong>Between</strong> View Controllers with NotificationCenter</li>
+</ul>
+
+<p><br /></p>
+
+<p>다양한 방법이 존재하지만, 이번에 설명할 방법은 총 3가지 입니다</p>
+
+<ul>
+  <li>Property를 통한 데이터 전달</li>
+  <li>Segue를 통한 데이터 전달</li>
+  <li>Delegate를 사용한 데이터 전달</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="property를-통한-데이터-전달">property를 통한 데이터 전달</h2>
+<hr />
+
+<p><img width="240" alt="스크린샷 2022-02-23 시간: 23 14 57" src="https://user-images.githubusercontent.com/84072084/155336809-da3528c6-8f1b-46f9-84b5-a222c14ab0e0.png" />
+<img width="240" alt="스크린샷 2022-02-23 시간: 23 15 04" src="https://user-images.githubusercontent.com/84072084/155336814-b2f3e6b9-77c8-4f73-a3ae-fd7b05769541.png" /></p>
+
+<p>왼쪽(<code class="language-plaintext highlighter-rouge">ViewController</code>)에서 오른쪽 (<code class="language-plaintext highlighter-rouge">CodePushViewConroller</code>) 로의 데이터를 전달하는 방법을 알아보도록 하겠습니다</p>
+
+<p><img width="1150" alt="스크린샷 2022-02-23 시간: 23 14 46" src="https://user-images.githubusercontent.com/84072084/155336791-a33a9365-2754-4f88-9e9e-452976e5e004.png" /></p>
+
+<p>먼저 데이터를 보낼 뷰 컨트롤러에 <code class="language-plaintext highlighter-rouge">UIButton</code>을 추가하고 <code class="language-plaintext highlighter-rouge">@IBAction</code>함수로 뷰 컨트롤러에 연결해 주었습니다</p>
+
+<p>그 후 <code class="language-plaintext highlighter-rouge">self.storyboard?.instantiateViewController(identifier: )</code> 메서드를 이용하여 <code class="language-plaintext highlighter-rouge">identifier</code> 식별자를 가진 뷰 컨트롤러를 인스턴스화 시켜주고 옵셔널 바인딩 합니다</p>
+
+<p>옵셔널 바인딩 후 <code class="language-plaintext highlighter-rouge">as?</code> 키워드를 이용하여 앞서 리턴된 <code class="language-plaintext highlighter-rouge">UIVIewController</code> 클래스를 해당 클래스(<code class="language-plaintext highlighter-rouge">CodePushViewController</code>)로 다운 캐스팅 해 줍니다</p>
+
+<p>그렇게 되면, 해당 property에 접근할 수 있게 됩니다</p>
+
+<p><img width="433" alt="스크린샷 2022-02-23 시간: 23 15 11" src="https://user-images.githubusercontent.com/84072084/155336822-bbab9696-24a3-4144-8f78-e7591aa075ff.png" /></p>
+
+<p>그 후 해당 클래스의 <code class="language-plaintext highlighter-rouge">viewDidLoad</code> 함수에서 전달받은 데이터를 활용하면 됩니다</p>
+
+<blockquote>
+  <p>이 방식은 Navigation Stack에 쌓이게 될 뷰 컨트롤러에 다음과 같은 property를 같이 넘긴다는 의미이기 때문에 꼭 push나 present를 하는 경우에만 데이터가 전달이 됩니다</p>
+</blockquote>
+
+<p><br /></p>
+
+<h2 id="segue를-통한-데이터-전달">Segue를 통한 데이터 전달</h2>
+<hr />
+
+<p><img width="778" alt="image" src="https://user-images.githubusercontent.com/84072084/155873559-ab0b4622-c5f5-4111-bf83-807cde440989.png" /></p>
+
+<p>먼저 기존 뷰 컨트롤러와 새로운 뷰 컨트롤러 <code class="language-plaintext highlighter-rouge">newViewController</code> 를 생성해 주었다</p>
+
+<p>그 후, <code class="language-plaintext highlighter-rouge">newViewController</code>로 전달하기 위한 텍스트를 입력받을 텍스트필드를 생성하였고 버튼을 생성해 주었다</p>
+
+<p><code class="language-plaintext highlighter-rouge">Segue</code>로 전달하는 방법을 알아보아야 하니 버튼을 통하여 <code class="language-plaintext highlighter-rouge">newViewController</code>를 <code class="language-plaintext highlighter-rouge">Segue</code>로 연결해 주도록 하겠다</p>
+
+<p><img width="386" alt="image" src="https://user-images.githubusercontent.com/84072084/155873836-ce750063-a841-4329-8bf1-6abe753fb56c.png" /></p>
+
+<p>두 뷰 컨트롤러가 <code class="language-plaintext highlighter-rouge">Segue</code>로 연결되었다면 첫번째 뷰 컨트롤러로 돌아가서</p>
+
+<p><img width="430" alt="image" src="https://user-images.githubusercontent.com/84072084/155874455-8ccac413-4150-41c8-8052-ca36efc3d5f8.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">prepare</code> 메서드를 <code class="language-plaintext highlighter-rouge">override</code> 해 준다</p>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">prepare</code> 메서드는 <code class="language-plaintext highlighter-rouge">segue</code>를 이용하여 뷰가 전환되기 직전에 호출되는 메서드이며 이 함수에서 <code class="language-plaintext highlighter-rouge">segue.destination</code> 키워드를 통하여 <code class="language-plaintext highlighter-rouge">segue</code>로 push할 때의 목적지 뷰 컨트롤러의 인스턴스로 접근할 수 있다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">guard</span> <span class="k">let</span> <span class="nv">viewController</span> <span class="o">=</span> <span class="n">segue</span><span class="o">.</span><span class="n">destination</span> <span class="k">as?</span> <span class="n">newViewController</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>먼저, 옵셔널 바인딩 그리고 <code class="language-plaintext highlighter-rouge">newViewController</code>로 다운캐스팅을 해주고</p>
+
+<p><img width="430" alt="image" src="https://user-images.githubusercontent.com/84072084/155874684-6abec11e-6fc2-4fe4-9281-9b6a4f1712a3.png" /></p>
+
+<p>다음과 같이 해당 인스턴스의 프로퍼티에 접근하여 데이터를 전달해주면 된다</p>
+
+<p><br /></p>
+
+<p>이후 <code class="language-plaintext highlighter-rouge">newViewController</code>의 <code class="language-plaintext highlighter-rouge">viewDidLoad()</code> 메서드에서</p>
+
+<p><img width="422" alt="image" src="https://user-images.githubusercontent.com/84072084/155874867-bb90271f-1fd7-4160-adf9-899e225798b5.png" /></p>
+
+<p>다음과 같이 바인딩 해주고 전달할 부분에 전달받은 데이터를 활용해주면 된다</p>
+
+<p><img width="300" alt="image" src="https://user-images.githubusercontent.com/84072084/155875227-de282d05-5f2a-4bea-b42d-9d7ef23e3111.png" />
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/84072084/155875220-8bb1deb2-aafa-40fe-ad55-be29b40e8037.png" /></p>
+
+<p>잘 전달이 되는 것을 확인할 수 있다</p>
+
+<p><br /></p>
+
+<h2 id="delegate를-사용한-데이터-전달">Delegate를 사용한 데이터 전달</h2>
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">delegate</code> 를 사용한 데이터 전달은 일반적으로 많이 사용하는 방식이며 꼭 알아두어야 하는 방식 중 하나입니다</p>
+
+<p>누가 지정해 놓은 일을 내가 대신 하는 것, 프로토콜 안에 있는 함수들을 내가 대신 처리하겠다. 이런 뜻으로 이해하면 될 것 같습니다</p>
+
+<p>보통 뷰 컨트롤러를 Push하면서 데이터를 넘길 때에는 Segue로 데이터를 넘기는데, 반대로 pop이 될 때에는 뷰 컨트롤러가 <code class="language-plaintext highlighter-rouge">dismiss</code> 되어 메모리에서 데이터가 삭제되기 때문에 Segue로 넘겨줄 수 없기 때문에 이 <code class="language-plaintext highlighter-rouge">delegate</code>를 많이 사용한다</p>
+
+<p><br /></p>
+
+<p>먼저 전달하는 뷰 컨트롤러(<code class="language-plaintext highlighter-rouge">SendViewController</code> 라고 가정)에서 <code class="language-plaintext highlighter-rouge">protocol</code>을 생성합니다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">protocol</span> <span class="kt">SendDataDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">sendData</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>다음과 같이, 프로토콜을 선언한 후에 메서드명과 프로퍼티명 그리고 전달할 데이터의 데이터타입을 설정해줍니다</p>
+
+<p><br /></p>
+
+<p>그 후 클래스 내에서 방금 생성한 프로토콜인 <code class="language-plaintext highlighter-rouge">SendDataDelegate</code>를 생성합니다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="kt">SendViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">SendDataDelegate</span><span class="p">?</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<p>그 후 뷰 컨트롤러가 전환되는 부분을 가진 Action 함수에서 전환하는 함수를 호출하기 직전에 다음과 같이 작성해 주면 됩니다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">tapSendButton</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">delegate</span><span class="p">?</span><span class="o">.</span><span class="nf">sendData</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"Hello World"</span><span class="p">)</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">navigationController</span><span class="p">?</span><span class="o">.</span><span class="nf">popViewController</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="이제-전달하는-뷰-컨트롤러에서의-작업은-끝났고-전달받을-뷰-컨트롤러-receiveviewcontroller-라고-가정-에서-해야하는-작업을-정리해-보겠습니다">이제 전달하는 뷰 컨트롤러에서의 작업은 끝났고, 전달받을 뷰 컨트롤러 (<code class="language-plaintext highlighter-rouge">ReceiveViewController</code> 라고 가정) 에서 해야하는 작업을 정리해 보겠습니다</h3>
+
+<p><br /></p>
+
+<p>가장 먼저 아까 생성했던 <code class="language-plaintext highlighter-rouge">protocol</code>을 채택합니다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="kt">ReceiveViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">SendDataDelegate</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>다음은 프로토콜의 요구사항을 충족시키기 위하여 아까 정의한 <code class="language-plaintext highlighter-rouge">sendData</code> 메서드를 구현해야 합니다</p>
+
+<p>클래스 내부에 구현해주면 되며 전달받은 데이터를 응용하면 됩니다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">func</span> <span class="nf">sendData</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">data</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>대부분 화면을 전환(<code class="language-plaintext highlighter-rouge">pop</code>)이 이루어지는 과정에서 전달이 이루어지기 때문에 그렇게 예시를 들어보겠습니다</p>
+
+<p><code class="language-plaintext highlighter-rouge">SendViewController</code>로 <code class="language-plaintext highlighter-rouge">push</code>작업이 이루어지기 직전에 해당하는 <code class="language-plaintext highlighter-rouge">prepare</code> 메서드를 오버라이딩 하여 이용해 보겠습니다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">override</span> <span class="kd">func</span> <span class="nf">prepare</span><span class="p">(</span><span class="k">for</span> <span class="nv">segue</span><span class="p">:</span> <span class="kt">UIStoryboardSegue</span><span class="p">,</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">viewcontroller</span> <span class="o">=</span> <span class="n">segue</span><span class="o">.</span><span class="n">destination</span> <span class="k">as?</span> <span class="kt">ReceiveViewController</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+    <span class="n">viewcontroller</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>다음과 같이 <code class="language-plaintext highlighter-rouge">ReceiveViewController</code>의 delegate, (여기서는 위임자라고 칭하겠습니다) 위임자가 자기 자신(<code class="language-plaintext highlighter-rouge">SendViewController</code>)이라는 것을 명시해주면 완료되는 것을 볼 수 있습니다</p>
+
+<p><br /></p>
+
+<h2 id="delegate-pattern-추가">Delegate Pattern 추가</h2>
+<hr />
+
+<p>추가적으로, <code class="language-plaintext highlighter-rouge">delegate pattern</code>을 사용할 때 두 객체가 서로를 참조하고 있는데 이럴 경우 메모리가 해제되지 않아서 좀비로 영원히 남을 수가 있습니다 ( 메모리 누수 발생 위험 )</p>
+
+<p>그렇기 때문에 델리게잇을 선언할 때 <code class="language-plaintext highlighter-rouge">weak var delegate: SendDataDeleage</code> 와 같이 <code class="language-plaintext highlighter-rouge">weak</code> 키워드를 사용하는 것이 좋다고 합니다</p>
+
+<p><code class="language-plaintext highlighter-rouge">weak</code> 키워드를 사용하기 위해서는 <code class="language-plaintext highlighter-rouge">protocol</code>에서 오직 이 프로토콜은 클래스에서만 사용이 가능하다는 것이 명시가 되어야 하는데, 이는 프로토콜에 클래스나 <code class="language-plaintext highlighter-rouge">AnyObject</code>를 상속받아 프로토콜이 오직 클래스에서만 채택이 가능하다는 것을 명시해주면 됩니다</p>
+
+<p><code class="language-plaintext highlighter-rouge">protocol</code>이 클래스 또는 <code class="language-plaintext highlighter-rouge">AnyObject</code>를 상속받지 않는다면 모든 곳에서 채택이 가능합니다</p>
+
+<p><br /></p>
+
+<h2 id="reference">Reference</h2>
+<hr />
+
+<p><a href="https://i-colours-u.tistory.com/6">https://i-colours-u.tistory.com/6</a></p>
+
+<p><a href="https://www.appypie.com/pass-data-between-view-controllers-swift-how-to">https://www.appypie.com/pass-data-between-view-controllers-swift-how-to</a></p>]]></content><author><name></name></author><category term="iOS" /><category term="APP" /><category term="delegate" /><category term="property" /><category term="segue" /><summary type="html"><![CDATA[화면 간 데이터 전달 (1)]]></summary></entry><entry><title type="html">iOS | ViewController 생명 주기(Life Cycle)</title><link href="https://xpexpe.github.io/ios/app/6/" rel="alternate" type="text/html" title="iOS | ViewController 생명 주기(Life Cycle)" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-16T21:31:27+09:00</updated><id>https://xpexpe.github.io/ios/app/6</id><content type="html" xml:base="https://xpexpe.github.io/ios/app/6/"><![CDATA[<h1 id="viewcontroller의-life-cycle">ViewController의 Life Cycle</h1>
+<hr />
+
+<h3 id="뷰-컨트롤러에는-생명-주기life-cycle가-존재하는데-이는-화면이-전환될-때-처리해야하는-작업들을-라이프사이클에-이벤트화된-시점들을-통하여-처리할-수-있다">뷰 컨트롤러에는 생명 주기(Life Cycle)가 존재하는데, 이는 화면이 전환될 때 처리해야하는 작업들을 라이프사이클에 이벤트화된 시점들을 통하여 처리할 수 있다</h3>
+
+<p><img width="500" alt="viewcontrollerlifecycle" src="https://docs-assets.developer.apple.com/published/f06f30fa63/UIViewController_Class_Reference_2x_ddcaa00c-87d8-4c85-961e-ccfb9fa4aac2.png" /></p>
+
+<h4 id="다음과-같은-함수들이-정의되어-있다">다음과 같은 함수들이 정의되어 있다</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">viewDidLoad()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">viewWillAppear()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">viewDidAppear()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">viewWillDisappear()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">viewDidDisappear()</code></li>
+</ul>
+
+<p><br /></p>
+
+<p>화면이 전환될 때 처리해야 할 작업들을 원하는 시점에 해당하는 함수를 통하여 실행시킬 수 있다</p>
+
+<p><br /></p>
+
+<h2 id="viewdidload">viewDidLoad()</h2>
+<hr />
+
+<p><em>뷰가 로드 되었다</em></p>
+
+<p>뷰 컨트롤러의 모든 <code class="language-plaintext highlighter-rouge">View</code> 들이 메모리에 로드 되었을 때, 처음 딱 한번만 호출된다</p>
+<blockquote>
+  <p>특정 뷰 컨트롤러를 <code class="language-plaintext highlighter-rouge">push</code> 할 때 메모리에 로드되며 호출되지만, <code class="language-plaintext highlighter-rouge">pop</code>과 동시에 메모리에서 삭제되기 때문에 다시 <code class="language-plaintext highlighter-rouge">push</code> 하면 다시 호출된다</p>
+</blockquote>
+
+<p>초기화 작업을 실행하고자 할 때 많이 활용하며 클래스를 생성하면 가장 처음으로 볼 수 있는것이</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+  <span class="c1">// Do any additional setup after loading the view.</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>인데, 뷰가 로딩되고 나서 실행할 추가적인 작업을 여기에 집어넣으면 된다</p>
+
+<p><br /></p>
+
+<h2 id="viewwillappear">viewWillAppear()</h2>
+<hr />
+
+<p><em>뷰가 나타날 것이다</em></p>
+
+<p>뷰가 뷰 계층에 추가되고, 화면이 보이기 직전에 매번 호출된다</p>
+
+<p>다른 뷰로 이동했다가 되돌아오면 다시 재호출 된다는 뜻</p>
+
+<p>뷰와 관련된 추가적인 초기화 작업을 적어주면 된다</p>
+
+<p><br /></p>
+
+<h2 id="viewdidappear">viewDidAppear()</h2>
+<hr />
+
+<p><em>뷰가 나타났다</em></p>
+
+<p>뷰 컨트롤러에 뷰가 뷰 계층에 추가된 후 호출된다</p>
+
+<p>뷰를 나타낼 때 필요한 추가 작업, 애니메이션 등</p>
+
+<p><br /></p>
+
+<h2 id="viewwilldisappear">viewWillDisappear()</h2>
+<hr />
+
+<p><em>뷰가 사라질 것이다</em></p>
+
+<p>뷰가 뷰 계층에서 사라지기 전에 호출된다</p>
+
+<p>뷰가 생성된 뒤 작업한 내용 되돌리기 혹은 최종 데이터 저장 등</p>
+
+<p><br /></p>
+
+<h2 id="viewdiddisappear">viewDidDisappear()</h2>
+<hr />
+
+<p><em>뷰가 사라졌다</em></p>
+
+<p>뷰가 뷰 계층에서 사라진 뒤에 호출된다</p>
+
+<p>뷰가 사라지는 것과 관련된 추가 작업 등</p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h1 id="실습">실습</h1>
+<hr />
+
+<p>위의 라이프사이클 메서드들이 언제 호출되는지 알아보기 위하여 다음과 같이 각 메서드들에 <code class="language-plaintext highlighter-rouge">print()</code>를 작성해 보았다</p>
+
+<p><img width="561" alt="스크린샷 2022-02-15 시간: 00 27 28" src="https://user-images.githubusercontent.com/84072084/153893499-2f0a7079-b383-4c82-bc48-884f497e35ab.png" /></p>
+
+<p><br /></p>
+
+<h3 id="프로젝트-실행">프로젝트 실행</h3>
+<hr />
+
+<p><img width="483" alt="스크린샷 2022-02-15 시간: 00 31 23" src="https://user-images.githubusercontent.com/84072084/153894081-dc9b649b-3ce5-4e29-942f-cb3ed026b578.png" /></p>
+
+<p>루트 뷰 컨트롤러가 화면에 완전히 띄워지기까지 다음과 같은 메서드들이 순서대로 호출되었다</p>
+
+<p><code class="language-plaintext highlighter-rouge">viewDidLoad()</code> - <code class="language-plaintext highlighter-rouge">viewWillAppear()</code> - <code class="language-plaintext highlighter-rouge">viewDidAppear()</code></p>
+
+<p><br /></p>
+
+<h3 id="다른-뷰-컨트롤러로-push">다른 뷰 컨트롤러로 <code class="language-plaintext highlighter-rouge">push</code></h3>
+<hr />
+<p><img width="493" alt="스크린샷 2022-02-15 시간: 00 37 48" src="https://user-images.githubusercontent.com/84072084/153902874-074c1d69-4606-4200-87f4-ee0c30843980.png" /></p>
+
+<p>다른 뷰 컨트롤러가 화면에 완전히 띄워지기까지 다음과 같은 메서드들이 순서대로 호출되었다</p>
+
+<p><code class="language-plaintext highlighter-rouge">viewWillDisappear()</code> - <code class="language-plaintext highlighter-rouge">viewDidDisappear()</code></p>
+
+<p><br /></p>
+
+<h3 id="back버튼-클릭시-pop">back버튼 클릭시 <code class="language-plaintext highlighter-rouge">pop</code></h3>
+<hr />
+
+<p><img width="490" alt="스크린샷 2022-02-15 시간: 01 16 19" src="https://user-images.githubusercontent.com/84072084/153902713-1b936c8e-bcf7-462a-b111-6ff26ef93855.png" /></p>
+
+<p>루트 뷰 컨트롤러가 완전히 띄워지기까지 다음과 같은 메서드들이 순서대로 호출되었다</p>
+
+<p><code class="language-plaintext highlighter-rouge">viewWillAppear()</code> - <code class="language-plaintext highlighter-rouge">viewDidAppear()</code></p>
+
+<p>이때에는 루트 뷰 컨트롤러가 다시 띄워졌음에도 불구하고 <code class="language-plaintext highlighter-rouge">viewDidLoad()</code>가 호출되지 않았는데, 앞서 말했던 대로 메모리에 이미 올라가있기 때문에 호출되지 않는다</p>
+
+<p><br /></p>
+
+<h2 id="push되는-두번째-뷰-컨트롤러는-어떤-순서로-호출될까">push되는 두번째 뷰 컨트롤러는 어떤 순서로 호출될까?</h2>
+
+<p>두번째 뷰 컨트롤러는 <code class="language-plaintext highlighter-rouge">pushviewController</code>로 하고 어떤 순서로 호출되는지 알아보았다
+<br /></p>
+
+<h3 id="push-버튼-클릭시">push 버튼 클릭시</h3>
+<hr />
+<p><img width="512" alt="스크린샷 2022-02-15 시간: 01 25 50" src="https://user-images.githubusercontent.com/84072084/153904658-d81ad431-f1fc-4b54-a492-28116052daad.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">viewDidLoad()</code> - <code class="language-plaintext highlighter-rouge">viewWillAppear()</code> - <code class="language-plaintext highlighter-rouge">viewDidAppear()</code></p>
+
+<p>순서로 호출되었으며, 사이사이에 기존에 있던 루트 뷰 컨트롤러의 이벤트 메서드가 실행되는 것을 볼 수 있었다</p>
+
+<p><br /></p>
+
+<h3 id="back버튼-클릭시-pop-1">back버튼 클릭시 <code class="language-plaintext highlighter-rouge">pop</code></h3>
+<hr />
+
+<p><img width="539" alt="스크린샷 2022-02-15 시간: 01 32 42" src="https://user-images.githubusercontent.com/84072084/153905838-d51b87d7-62ca-42a6-88a3-1c5610498953.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">viewWillAppear()</code> - <code class="language-plaintext highlighter-rouge">viewDidAppear()</code></p>
+
+<p>순서로 호출되며, 사이사이에 기존 루트 뷰 컨트롤러의 이벤트 메서드가 실행되는 것을 볼 수 있었다</p>
+
+<p><br /></p>
+
+<h3 id="다시-push버튼을-눌렀을-때">다시 push버튼을 눌렀을 때</h3>
+
+<hr />
+
+<p><img width="523" alt="스크린샷 2022-02-15 시간: 01 33 46" src="https://user-images.githubusercontent.com/84072084/153905849-77e57ad0-1f4b-479d-9a27-98d33f2784ee.png" /></p>
+
+<p>앞에서 루트 뷰 컨트롤러가 다시 띄워졌을 때에는 <code class="language-plaintext highlighter-rouge">viewDidLoad()</code> 가 호출되지 않았는데 이번에는 다시 호출되었다</p>
+
+<p>이유는 앞서 말했었지만, <code class="language-plaintext highlighter-rouge">pushviewcontroller</code>가 <code class="language-plaintext highlighter-rouge">Navigation Stack</code>에서 <code class="language-plaintext highlighter-rouge">pop</code>되면 메모리에서 지워지기 때문에 다시 <code class="language-plaintext highlighter-rouge">push</code>되었을 때 메모리에 다시 로드되어 <code class="language-plaintext highlighter-rouge">viewDidLoad()</code>가 호출된다</p>
+
+<p><br /></p>
+
+<h2 id="reference">Reference</h2>
+
+<hr />
+
+<p><a href="https://developer.apple.com/documentation/uikit/uiviewcontroller">https://developer.apple.com/documentation/uikit/uiviewcontroller</a></p>]]></content><author><name></name></author><category term="iOS" /><category term="APP" /><category term="viewcontroller" /><category term="lifecycle" /><summary type="html"><![CDATA[ViewController의 Life Cycle]]></summary></entry><entry><title type="html">iOS | 화면 전환 방법(Segue)</title><link href="https://xpexpe.github.io/ios/app/4/" rel="alternate" type="text/html" title="iOS | 화면 전환 방법(Segue)" /><published>2022-02-13T01:00:00+09:00</published><updated>2022-02-22T15:51:21+09:00</updated><id>https://xpexpe.github.io/ios/app/4</id><content type="html" xml:base="https://xpexpe.github.io/ios/app/4/"><![CDATA[<h1 id="segue를-이용한-push-present">Segue를 이용한 Push, Present</h1>
+
+<hr />
+
+<p><img width="802" alt="스크린샷 2022-02-12 시간: 23 41 35" src="https://user-images.githubusercontent.com/84072084/153719628-b639192d-aa61-473b-99eb-6fff17d8d7aa.png" /></p>
+
+<p>다음과 같이 네비게이션 컨트롤러와 루트 뷰 컨트롤러를 연결한 후</p>
+
+<p>실습할 Push버튼과 Present 버튼을 루트 뷰 컨트롤러에 추가하고, 이동하게 할 새로운 뷰 컨트롤러를 추가해 준다</p>
+
+<p><br /></p>
+
+<h2 id="segue를-이용한-push">Segue를 이용한 <code class="language-plaintext highlighter-rouge">Push</code></h2>
+<hr />
+
+<p>굉장히 간단한데, Push 버튼을 <strong>오른쪽 마우스 버튼</strong>을 누르면서 새로운 뷰 컨트롤러 쪽으로 드래그 하면 된다</p>
+
+<p><img width="187" alt="스크린샷 2022-02-12 시간: 23 45 45" src="https://user-images.githubusercontent.com/84072084/153719647-8fb1664a-7c14-41df-882a-38314c27d6e3.png" /></p>
+
+<p>그러면 다음과 같은 화면이 나오는데, <code class="language-plaintext highlighter-rouge">Show</code> 를 클릭해 주면 연결이 완료된다</p>
+
+<p><img width="212" alt="스크린샷 2022-02-13 시간: 01 33 58" src="https://user-images.githubusercontent.com/84072084/153719731-88431c14-ed4f-4fd4-9cbd-65bdddc18895.png" />
+<img width="200" alt="스크린샷 2022-02-13 시간: 01 48 12" src="https://user-images.githubusercontent.com/84072084/153720254-bacc1c31-9d8c-4f21-8301-9034ba774461.png" /></p>
+
+<p>프로젝트를 실행시켜 결과를 확인해보면, Segue Push 버튼을 누를 때 지정한 뷰 컨트롤러로 이동하는 것을 볼 수 있다</p>
+
+<p><br /></p>
+
+<h3 id="이번에는-기존-뷰-컨트롤러로-돌아가는-back-버튼을-새로운-뷰-컨트롤러에-직접-만들어-보겠다">이번에는 기존 뷰 컨트롤러로 돌아가는 <code class="language-plaintext highlighter-rouge">Back</code> 버튼을 새로운 뷰 컨트롤러에 직접 만들어 보겠다</h3>
+
+<p>버튼을 새로운 뷰 컨트롤러에 삽입하고, <code class="language-plaintext highlighter-rouge">File -&gt; New File -&gt; Cocoa Touch Class</code> 로 새로운 파일을 생성한다</p>
+
+<p><img width="439" alt="스크린샷 2022-02-12 시간: 23 51 08" src="https://user-images.githubusercontent.com/84072084/153719781-bea55469-e10b-4a2d-a1f4-b04f367bab73.png" /></p>
+
+<p>다음과 같이 지정해 주고, <code class="language-plaintext highlighter-rouge">Next</code> 를 눌러 <code class="language-plaintext highlighter-rouge">SeguePushViewController</code> 클래스 생성을 완료한다</p>
+
+<p><br /></p>
+
+<p>만들었다면, 기존에 만들었던 뷰 컨트롤러와 새로 만든 클래스를 연결해야 한다</p>
+
+<p><img width="600" alt="스크린샷 2022-02-12 시간: 23 54 55" src="https://user-images.githubusercontent.com/84072084/153719793-71da92f4-d813-4520-a3e5-ed0e3e0c5c3c.png" /></p>
+
+<p>표시한 순서대로 접근하여 새로 만든 클래스와 기존 뷰 컨트롤러를 연결시켜주는 작업을 완료한다</p>
+
+<p><br /></p>
+
+<p>그 후 <code class="language-plaintext highlighter-rouge">Assistant</code> 를 열고 새로 추가한 버튼의 <code class="language-plaintext highlighter-rouge">Action</code> 을 연결해 준다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">tapBackButton</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<p>우리는 <code class="language-plaintext highlighter-rouge">Navigation Controller</code> 의 <code class="language-plaintext highlighter-rouge">Push</code> 를 이용하여 화면을 전환하였으므로 네비게이션 스택에서 뷰 컨트롤러를 <code class="language-plaintext highlighter-rouge">Pop</code> 해주어야 하기 때문에</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">tapBackButton</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">self</span><span class="o">.</span><span class="n">navigationController</span><span class="p">?</span><span class="o">.</span><span class="nf">popViewController</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>다음과 같이 <code class="language-plaintext highlighter-rouge">navigationController</code> 의 <code class="language-plaintext highlighter-rouge">popViewController</code> 메서드를 이용하여 <code class="language-plaintext highlighter-rouge">Back</code> 기능을 구현할 수 있다</p>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Push, Pop</code> 은 <code class="language-plaintext highlighter-rouge">Navigation Controller</code> 의 <code class="language-plaintext highlighter-rouge">Navigation Stack</code> 을 이용하기 때문에, <code class="language-plaintext highlighter-rouge">self.navigationController</code> 키워드를 통하여 접근한다</p>
+
+<p>또한, <code class="language-plaintext highlighter-rouge">navigationController</code> 는 옵셔널이기 때문에 <code class="language-plaintext highlighter-rouge">?</code> 키워드를 반드시 붙여 주어야 하며, <code class="language-plaintext highlighter-rouge">animated</code> 는 화면 전환 애니메이션을 사용할것인지 여부를 의미한다</p>
+
+<p><br /></p>
+
+<h2 id="segue를-이용한-present">Segue를 이용한 <code class="language-plaintext highlighter-rouge">Present</code></h2>
+<hr />
+
+<p>새로운 View Controller를 만들고, 이번에는 만들어 놓았던 Segue Present 버튼을 이용하여 새로운 뷰 컨트롤러로 <code class="language-plaintext highlighter-rouge">Present</code> 되도록 실습해 보겠다</p>
+
+<p>위와 동일하게 마우스 오른쪽 클릭을 한 채로 새로운 뷰 컨트롤러로 드래그 앤 드랍 하고 <code class="language-plaintext highlighter-rouge">Present Modally</code> 를 클릭해 주면 연결이 완료된다</p>
+
+<p><img width="177" alt="스크린샷 2022-02-13 시간: 00 08 54" src="https://user-images.githubusercontent.com/84072084/153719826-7a2b8653-09d5-4f37-8bf4-8919b0893df1.png" /></p>
+
+<p>그러면 앞서 <code class="language-plaintext highlighter-rouge">Present</code> 방식에서 설명하였던 모습으로 뷰 컨트롤러가 변한 것을 볼 수 있을 것이다</p>
+
+<p><br /></p>
+
+<p><img width="278" alt="스크린샷 2022-02-13 시간: 01 38 00" src="https://user-images.githubusercontent.com/84072084/153719897-3abb22e7-49cb-4e6f-a35e-dea5a0671ce9.png" />
+<img width="278" alt="스크린샷 2022-02-13 시간: 01 38 06" src="https://user-images.githubusercontent.com/84072084/153719900-5f03d207-2e76-4ab2-8161-df1065bf40f7.png" /></p>
+
+<p>정상적으로 작동되며, 위쪽 모서리 부분을 아래로 스와이프 하면 덮어 씌워진 뷰 컨트롤러를 제거할 수 있다</p>
+
+<p><br /></p>
+
+<p>이후 동일하게 뒤로가기 버튼을 구현하기 위하여 새로운 <code class="language-plaintext highlighter-rouge">Cocoa Touch Class</code> 파일을 생성하고 이름은 <code class="language-plaintext highlighter-rouge">SeguePresentViewController</code> 로 설정해 준다</p>
+
+<p>뷰 컨트롤러와 <code class="language-plaintext highlighter-rouge">SeguePresentViewController</code> 클래스를 연결, 버튼 삽입 후 <code class="language-plaintext highlighter-rouge">Action</code> 연결을 마친 후</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">tapBackButton</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">self</span><span class="o">.</span><span class="n">presentingViewController</span><span class="p">?</span><span class="o">.</span><span class="nf">dismiss</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>다음과 같이 <code class="language-plaintext highlighter-rouge">dismiss</code> 함수를 이용하여 이전 뷰 컨트롤러로 되돌아갈 수 있으며, <code class="language-plaintext highlighter-rouge">popViewController</code> 와 동일하게 <code class="language-plaintext highlighter-rouge">animated</code> 는 화면 전환 애니메이션 여부를 의미한다</p>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">completion</code> 은 화면 전환이 완료된 이후에 실행될 메서드를 작성해주면 된다 (없다면 <code class="language-plaintext highlighter-rouge">nil</code>)</p>
+
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Present</code> 방식에서 살짝 화면 위가 남아있는 형태를 띄고 있는데, 이를 없애고 Full Screen으로도 수정할 수 있다</p>
+
+<p><img width="490" alt="스크린샷 2022-02-13 시간: 01 52 36" src="https://user-images.githubusercontent.com/84072084/153720434-885b18ed-04bb-483d-8c1c-edc2d5ae522a.png" />
+<img width="272" alt="스크린샷 2022-02-13 시간: 01 53 02" src="https://user-images.githubusercontent.com/84072084/153720437-e25ef363-87fc-489f-9fe2-2b8a7cd48737.png" /></p>
+
+<p>빨간색 동그라미친 <code class="language-plaintext highlighter-rouge">SeguePresentViewController</code> 와 연결된 <code class="language-plaintext highlighter-rouge">Segue</code>를 클릭한 다음, 오른쪽 메뉴에서 <code class="language-plaintext highlighter-rouge">Presentation</code> 속성을 <code class="language-plaintext highlighter-rouge">Full Screen</code>으로 바꾸어 주면</p>
+
+<p><br /></p>
+
+<p><img width="216" alt="스크린샷 2022-02-13 시간: 01 53 08" src="https://user-images.githubusercontent.com/84072084/153720440-051209fc-2a8e-48be-87e1-1b7fa9e790bf.png" /></p>
+
+<p>다음과 같이 Full Screen으로 Present 되는 것을 볼 수 있다</p>]]></content><author><name></name></author><category term="iOS" /><category term="APP" /><category term="segue" /><category term="present" /><category term="push" /><summary type="html"><![CDATA[Segue를 이용한 Push, Present]]></summary></entry><entry><title type="html">iOS | 화면 전환 방법(Code)</title><link href="https://xpexpe.github.io/ios/app/5/" rel="alternate" type="text/html" title="iOS | 화면 전환 방법(Code)" /><published>2022-02-13T01:00:00+09:00</published><updated>2022-02-13T01:00:00+09:00</updated><id>https://xpexpe.github.io/ios/app/5</id><content type="html" xml:base="https://xpexpe.github.io/ios/app/5/"><![CDATA[<h1 id="code를-이용한-화면-전환">Code를 이용한 화면 전환</h1>
+
+<hr />
+
+<p>이번에는 코드를 이용하여 화면을 전환하는 방법을 실습해 보려고 한다</p>
+
+<p>먼저 다음과 같이 화면이 구성되어 있어야 한다</p>
+
+<p><img width="500" alt="스크린샷 2022-02-14 시간: 01 00 38" src="https://user-images.githubusercontent.com/84072084/153761566-b5425b24-5a01-4f04-b3c1-f59c779b8014.png" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Navigation Controller</code></li>
+  <li>루트 뷰 컨트롤러와 이동할 뷰 컨트롤러</li>
+  <li>앞서 <code class="language-plaintext highlighter-rouge">Segue</code> 를 이용한 화면 전환에서 했었던 <code class="language-plaintext highlighter-rouge">Cocoa Touch class</code> 파일과 뷰 컨트롤러의 연결</li>
+  <li>루트 뷰 컨트롤러에서 클릭할 버튼 생성</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="code로-push-기능-구현">Code로 Push 기능 구현</h2>
+
+<hr />
+
+<p><img width="269" alt="스크린샷 2022-02-13 시간: 23 47 19" src="https://user-images.githubusercontent.com/84072084/153761573-d6ffc8da-b90a-4700-9971-90cef83f6522.png" /></p>
+
+<p>이후 어시스턴스를 열어 루트 뷰 컨트롤러에 버튼의 <code class="language-plaintext highlighter-rouge">Action</code> 을 연결해 준다</p>
+
+<p><br /></p>
+
+<p><img width="805" alt="스크린샷 2022-02-13 시간: 23 52 03" src="https://user-images.githubusercontent.com/84072084/153761577-32d39b6f-4d85-4a55-ad25-ab79b733ef28.png" /></p>
+
+<p>코드를 이용하여 <code class="language-plaintext highlighter-rouge">Push</code> 할 때에는 이전 글에서 설명한 대로 <code class="language-plaintext highlighter-rouge">Navigation Controller</code> 의 <code class="language-plaintext highlighter-rouge">pushViewController()</code> 메서드를 사용해 주면 되는데 함수 원형은 다음과 같다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">func</span> <span class="nf">pushViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이동하고자 하는 뷰 컨트롤러를 첫번째 parameter에 기입하고, 화면 전환 애니메이션 여부를 두번째 parameter에 넣어서 호출하면 된다</p>
+
+<p><br /></p>
+
+<p>하지만, 우리가 이 함수를 호출하기 위해서는 이동하려고 하는 <code class="language-plaintext highlighter-rouge">CodePushViewController</code> 를 인스턴스화 하여야 하기 때문에 다음과 같은 코드를 작성하여 인스턴스화 할 수 있다</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">guard</span> <span class="k">let</span> <span class="nv">viewController</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">storyboard</span><span class="p">?</span><span class="o">.</span><span class="nf">instantiateViewController</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="p">)</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>스토리보드에 존재하는 <code class="language-plaintext highlighter-rouge">identifier</code> 값을 가지는 뷰 컨트롤러를 인스턴스화 할 수 있는 것이다</p>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">identifier</code> 은 다음과 같은 방법으로 확인 및 설정할 수 있다</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Push</code> 할 뷰 컨트롤러 클릭</li>
+  <li>오른쪽 메뉴에서 <code class="language-plaintext highlighter-rouge">Show Identity inspector</code> - <code class="language-plaintext highlighter-rouge">Identity</code> - <code class="language-plaintext highlighter-rouge">Storyboard ID</code></li>
+</ul>
+
+<p><img width="249" alt="스크린샷 2022-02-14 시간: 01 20 52" src="https://user-images.githubusercontent.com/84072084/153762447-0875c735-d8bc-4cf1-b187-86fd6dc4b4c5.png" />
+<img width="263" alt="스크린샷 2022-02-14 시간: 01 22 56" src="https://user-images.githubusercontent.com/84072084/153762554-18a5a0e2-5fe1-4329-9f6c-5f11153d78ce.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Storyboard ID</code> 에 <code class="language-plaintext highlighter-rouge">identifier</code> 를 설정해 줄 수 있으며 나는 클래스 명과 동일한 이름으로 지정했다</p>
+
+<p><br /></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">tapCodePushButton</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">viewController</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">storyboard</span><span class="p">?</span><span class="o">.</span><span class="nf">instantiateViewController</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"CodePushViewController"</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">navigationController</span><span class="p">?</span><span class="o">.</span><span class="nf">pushViewController</span><span class="p">(</span><span class="n">viewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>그 후 다음과 같이 생성된 인스턴스를 <code class="language-plaintext highlighter-rouge">pushViewController</code> 의 인자로 넘겨주면 구현이 완료되며 실행하였을 때 동일하게 작동하는 것을 볼 수 있다</p>
+
+<p><br /></p>
+
+<h2 id="code로-present-기능-구현">Code로 Present 기능 구현</h2>
+
+<hr />
+
+<p>코드로 Present 하는 것도 사용하는 메서드만 다르고 나머지는 동일하다</p>
+
+<p><br /></p>
+
+<p><img width="819" alt="스크린샷 2022-02-14 시간: 01 44 58" src="https://user-images.githubusercontent.com/84072084/153765339-3d1285ee-db77-4bb9-9077-0b8fe299484a.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">UIButton</code> 에 <code class="language-plaintext highlighter-rouge">Action</code> 함수 추가하기</p>
+
+<p><br /></p>
+
+<p><img width="260" alt="스크린샷 2022-02-14 시간: 01 45 57" src="https://user-images.githubusercontent.com/84072084/153765389-5cca66d6-4bf9-46ec-8acc-9c0fde0efd92.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Storyboard ID</code> 에 <code class="language-plaintext highlighter-rouge">identifier</code> 설정하기</p>
+
+<p><br /></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">guard</span> <span class="k">let</span> <span class="nv">viewController</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">storyboard</span><span class="p">?</span><span class="o">.</span><span class="nf">instantiateViewController</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"CodePresentViewController"</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이동하고자 하는 뷰 컨트롤러를 인스턴스화 한 후에</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">func</span> <span class="nf">present</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewControllerToPresent</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="n">animated</span> <span class="nv">flag</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>다음 <code class="language-plaintext highlighter-rouge">present</code> 메서드에 present할 뷰 컨트롤러, 애니메이션 여부, <code class="language-plaintext highlighter-rouge">completion</code> 을 적어주면 된다</p>
+
+<blockquote>
+  <p>첨언을 덧붙이자면, 화면 전환은 <em>비동기 방식</em>으로 처리되어 화면을 불러오는 작업과 동시에 다음 코드를 실행하므로 실패할 가능성이 있어 <code class="language-plaintext highlighter-rouge">completion</code> 인자를 활용하여 처리하는 것이 좋다고 한다</p>
+
+</blockquote>
+
+<p><br /></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">tapCodePresentButton</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">viewController</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">storyboard</span><span class="p">?</span><span class="o">.</span><span class="nf">instantiateViewController</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"CodePresentViewController"</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">present</span><span class="p">(</span><span class="n">viewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>실행해 보면, 새로운 뷰 컨트롤러가 <code class="language-plaintext highlighter-rouge">present</code> 되는 것을 확인할 수 있다</p>]]></content><author><name></name></author><category term="iOS" /><category term="APP" /><category term="code" /><category term="present" /><category term="push" /><summary type="html"><![CDATA[Code를 이용한 화면 전환]]></summary></entry><entry><title type="html">iOS | 화면 전환 방식(push, present)</title><link href="https://xpexpe.github.io/ios/app/3/" rel="alternate" type="text/html" title="iOS | 화면 전환 방식(push, present)" /><published>2022-02-12T22:00:00+09:00</published><updated>2022-02-12T22:00:00+09:00</updated><id>https://xpexpe.github.io/ios/app/3</id><content type="html" xml:base="https://xpexpe.github.io/ios/app/3/"><![CDATA[<h1 id="화면-전환-방식push-present">화면 전환 방식(push, present)</h1>
+
+<hr />
+
+<p>다양한 서비스를 제공하기 위해서 애플리케이션은 다양한 화면을 이용자에게 제공해야 한다</p>
+
+<p>단일 화면에서 여러개의 뷰를 이용한 화면 전환과 화면 간 데이터를 주고받는 과정은 필수적이라고 할 수 있다</p>
+
+<p><img src="https://user-images.githubusercontent.com/84072084/153719497-d12e7c1d-2724-4857-ab26-aab633a47e4a.png" alt="navigation_interface_2x_8f059f7f-2e2f-4c86-8468-7402b7b3cfe0" /></p>
+
+<p>iOS 설정 어플리케이션에 들어가면 다음과 같은 화면을 볼 수 있는데 이 또한 <code class="language-plaintext highlighter-rouge">Navigation Controller</code> 를 이용한 화면 전환 방식을 취하고 있다</p>
+
+<p><br /></p>
+
+<h2 id="다음-두-가지-방식이-대표적인-화면-전환의-방식이다">다음 두 가지 방식이 대표적인 화면 전환의 방식이다</h2>
+
+<p><img width="212" alt="스크린샷 2022-02-12 시간: 23 11 41" src="https://user-images.githubusercontent.com/84072084/153719526-7064a3c0-f0f4-4ab9-aeef-4ebf387ebcfd.png" />
+<img width="212" alt="스크린샷 2022-02-12 시간: 23 12 04" src="https://user-images.githubusercontent.com/84072084/153719528-8703a8f2-d087-4bb9-bab2-7601d9883a7f.png" /></p>
+
+<p><br /></p>
+
+<h3 id="push"><strong>Push</strong></h3>
+
+<ul>
+  <li>화면이 가로 방향으로 전환되며 스택의 구조를 가진다 (<code class="language-plaintext highlighter-rouge">Navigation Stack</code> 이라고 불림)</li>
+  <li>상단의 <code class="language-plaintext highlighter-rouge">Back Navigation Item</code> 이 자동으로 생성되며 누르면 기존 뷰 컨트롤러로 되돌아 간다 (pop 과정)</li>
+  <li>Left Edge Swipe(화면 왼쪽 모서리를 스와이프) 방식을 통해서도 이전 화면으로 되돌아 갈 수도 있음</li>
+  <li>LIFO(Last In First Out) : 후입선출 방식의 앞서 말한 네비게이션 스택을 활용</li>
+  <li><code class="language-plaintext highlighter-rouge">UINavigationController</code> 클래스의 메서드를 이용한다</li>
+</ul>
+
+<h3 id="present"><strong>Present</strong></h3>
+
+<ul>
+  <li>화면이 세로 방향으로 전환되며(<em>default</em>) <code class="language-plaintext highlighter-rouge">Navigation Controller</code> 위에 새로운 뷰 컨트롤러가 덮어지게 됨</li>
+  <li>Push 방식과 같이 Back 버튼은 생성되지 않으며, Default는 위쪽 가장자리 부분을 아래로 쓸어내리면 기존 뷰 컨트롤러로 되돌아갈 수 있다</li>
+  <li><code class="language-plaintext highlighter-rouge">UIViewController</code> 클래스의 메서드를 이용한다</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="화면-전환-방법">화면 전환 방법</h1>
+
+<hr />
+
+<h2 id="view-위에-다른-view-를-가져와-바꿔치기"><code class="language-plaintext highlighter-rouge">View</code> 위에 다른 <code class="language-plaintext highlighter-rouge">View</code> 를 가져와 바꿔치기</h2>
+
+<ul>
+  <li>메모리 누수 위험이 있어 사용되지 않음</li>
+</ul>
+
+<h2 id="view-controller-에서-다른-view-controller-를-호출하여-전환"><code class="language-plaintext highlighter-rouge">View Controller</code> 에서 다른 <code class="language-plaintext highlighter-rouge">View Controller</code> 를 호출하여 전환</h2>
+
+<ul>
+  <li>이동할 화면의 <code class="language-plaintext highlighter-rouge">View Controller</code> 를 덮는 방식</li>
+  <li><code class="language-plaintext highlighter-rouge">present, dismiss</code> 이용</li>
+  <li>비동기 방식 처리</li>
+</ul>
+
+<h2 id="navigation-controller-를-사용하여-화면-전환하기"><code class="language-plaintext highlighter-rouge">Navigation Controller</code> 를 사용하여 화면 전환하기</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">View Controller</code> 의 전환을 컨트롤</li>
+  <li><code class="language-plaintext highlighter-rouge">Navigation Stack</code> 으로 자식 뷰 컨트롤러를 관리</li>
+  <li><code class="language-plaintext highlighter-rouge">pushViewController, popViewController</code> 이용</li>
+</ul>
+
+<h2 id="화면-전환용-객체-segue를-이용한-화면-전환">화면 전환용 객체 <code class="language-plaintext highlighter-rouge">Segue</code>를 이용한 화면 전환</h2>
+
+<ul>
+  <li>Storyboard 만으로 화면 전환 가능</li>
+  <li><strong>Action Segue</strong> : 버튼 터치, 소스코드 추가 안해도 가능
+    <ul>
+      <li>Show (<code class="language-plaintext highlighter-rouge">Navigation Controller</code> 이용시 Push, 없다면 Present 이용)</li>
+      <li>Show Detail : iPad OS에서 이용</li>
+      <li>Present Modally : present 방식으로 처리</li>
+      <li>Present As Popover : iPad OS에서 이용</li>
+    </ul>
+  </li>
+  <li><strong>Manual Segue</strong> : 수동으로 처리해주는 <code class="language-plaintext highlighter-rouge">Segue</code></li>
+</ul>]]></content><author><name></name></author><category term="iOS" /><category term="APP" /><category term="NavigationController" /><category term="segue" /><category term="ViewController" /><category term="present" /><category term="push" /><summary type="html"><![CDATA[화면 전환 방식(push, present)]]></summary></entry></feed>

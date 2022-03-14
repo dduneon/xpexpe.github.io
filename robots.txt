@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /norobots/
+
+Sitemap: https://xpexpe.github.io/sitemap.xml
